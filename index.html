@@ -444,43 +444,68 @@
             </div>
         </div>
 
-        <!-- TAB 2: LORE (MINECRAFT: ZERO HOUR) -->
-        <div id="lore" class="tab-content">
-            <div class="card">
-                <div class="header-container">
-                    <img src="logo.png" alt="Logo The Last Stand" class="header-logo">
-                    <h1>THE LAST STAND SMP</h1>
-                    <p>La Storia del Server</p>
-                </div>
-
-                <div class="lore-box">
-                    <p style="margin-bottom: 1rem;">
-                        <strong>Anno 2026.</strong> Una variante virale sconosciuta si è diffusa a una velocità spaventosa. In pochi giorni, le metropoli di tutto il mondo sono crollate nel caos.
-                    </p>
-                    <p>
-                        Voi eravate a bordo dell'ultimo volo di evacuazione militare diretto verso la zona sicura. Ma durante il sorvolo sopra la città, un'infezione a bordo ha fatto perdere il controllo al pilota.
-                    </p>
-                    
-                    <div class="lore-quote">
-                        "BRACE FOR IMPACT! YOU'RE GOING TO NEED AN AIRBAG!"
-                    </div>
-
-                    <p>
-                        L'impatto è stato devastante. L'aereo si è schiantato nel cuore di una metropoli ormai morta, ridotta a uno scheletro di cemento, macchine abbandonate e vegetazione selvatica.
-                    </p>
-                    <p style="margin-top: 1rem; color: var(--primary-red); font-weight: 700;">
-                        Siete gli unici sopravvissuti all'impatto.
-                    </p>
-                </div>
-
-                <h3 style="color: var(--accent-orange); margin-bottom: 1rem; text-transform: uppercase;">☣️ Le Regole della Sopravvivenza:</h3>
-                <ul class="rules-list">
-                    <li><strong>I morti non riposano:</strong> La notte è troppo pericolosa. Nessuno riuscirà a dormire.</li>
-                    <li><strong>Fili di sangue nel cielo:</strong> Ogni poche notti la luna si tinge di rosso, rendendo le orde più veloci, aggressive e affamate.</li>
-                    <li><strong>Saccheggia e sopravvivi:</strong> Esplora gli edifici abbandonati, cerca cibo, risorse e difendi la tua base con gli altri superstiti.</li>
-                </ul>
-            </div>
+        <!-- TAB 2: LORE DEL SERVER -->
+<div id="lore" class="tab-content" style="display: none;">
+    <div class="card">
+        <div class="header-container">
+            <img src="logo.png" alt="Logo The Last Stand" class="header-logo">
+            <h1>La Caduta di New Eden</h1>
+            <p>Cronache dell'Apocalisse — 2031</p>
         </div>
+
+        <div style="margin-top: 1.5rem; text-align: left; font-family: var(--font-body);">
+            
+            <!-- CAPITOLO 1 -->
+            <div style="border-left: 3px solid var(--primary-red); padding-left: 1rem; margin-bottom: 2rem;">
+                <h3 style="color: var(--primary-red); font-size: 1.2rem; margin-bottom: 0.5rem; text-transform: uppercase;">1. L'Origine del Disastro</h3>
+                <p style="color: #cbd5e1; font-size: 0.95rem; line-height: 1.7;">
+                    Non è stato un asteroide. Non è stata una guerra nucleare. La fine è arrivata nei laboratori della <em>Aethelgard Bio-Tech</em>, sotto il pretesto di creare un vaccino universale. Il patogeno denominato <strong>"Ceppo-7"</strong> si è diffuso nell'aria in meno di 72 ore, spazzando via il 90% della popolazione mondiale e mutando il resto in esseri aggressivi ed imprevedibili.
+                </p>
+            </div>
+
+            <!-- CAPITOLO 2 -->
+            <div style="border-left: 3px solid var(--accent-orange); padding-left: 1rem; margin-bottom: 2rem;">
+                <h3 style="color: var(--accent-orange); font-size: 1.2rem; margin-bottom: 0.5rem; text-transform: uppercase;">2. La Città Quarantine: "New Eden"</h3>
+                <p style="color: #cbd5e1; font-size: 0.95rem; line-height: 1.7;">
+                    Quella che un tempo era una metropoli all'avanguardia è ora una gabbia di cemento e ruggine. Il governo cadde in pochi mesi, lasciando la città sigillata da alte mura di contenimento per evitare la fuga dell'infezione. Senza elettricità stabile e con le risorse idriche contaminate, la sopravvivenza quotidiana è diventata l'unica vera moneta di scambio.
+                </p>
+            </div>
+
+            <!-- FAZIONI -->
+            <h2 style="color: var(--text-light); font-size: 1.4rem; margin: 2rem 0 1rem 0; border-bottom: 1px solid var(--bg-card-border); padding-bottom: 0.5rem;">
+                ⚖️ Le Fazioni in Lotta
+            </h2>
+
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem; margin-bottom: 2rem;">
+                <!-- FAZIONE 1 -->
+                <div style="background: rgba(0,0,0,0.4); border: 1px solid rgba(255,46,46,0.3); border-radius: 8px; padding: 1rem;">
+                    <h4 style="color: #ff4d4d; margin-bottom: 0.5rem;">🛡️ La Milizia Civile</h4>
+                    <p style="color: var(--text-muted); font-size: 0.85rem;">Ex forze dell'ordine e cittadini organizzati. Tentano di mantenere l'ordine, difendere i confini sicuri e ristabilire una parvenza di legge.</p>
+                </div>
+
+                <!-- FAZIONE 2 -->
+                <div style="background: rgba(0,0,0,0.4); border: 1px solid rgba(255,107,43,0.3); border-radius: 8px; padding: 1rem;">
+                    <h4 style="color: #ff6b2b; margin-bottom: 0.5rem;">☣️ I Sciacalli</h4>
+                    <p style="color: var(--text-muted); font-size: 0.85rem;">Sopravvissuti spietati, mercenari e banditi. Non credono nella legge, ma solo nella forza. Controllano il mercato nero e le risorse preziose.</p>
+                </div>
+
+                <!-- FAZIONE 3 -->
+                <div style="background: rgba(0,0,0,0.4); border: 1px solid rgba(241,196,15,0.3); border-radius: 8px; padding: 1rem;">
+                    <h4 style="color: #f1c40f; margin-bottom: 0.5rem;">🏕️ I Solitari</h4>
+                    <p style="color: var(--text-muted); font-size: 0.85rem;">Civili che cercano solo di sopravvivere giorno per giorno senza prendere un lato nei conflitti di fazione. Agricoltori, medici e costruttori.</p>
+                </div>
+            </div>
+
+            <!-- CHIAMATA ALL'AZIONE -->
+            <div style="background: rgba(255, 46, 46, 0.1); border: 1px dashed var(--primary-red); border-radius: 8px; padding: 1.2rem; text-align: center;">
+                <p style="color: var(--text-light); font-weight: 600; margin: 0;">
+                    Ora tocca a te. Chi sarai in questa nuova era? Un eroe pronto a ricostruire o un predone delle rovine?
+                </p>
+            </div>
+
+        </div>
+    </div>
+</div>
 
         <!-- TAB 3: RICHIESTA WHITELIST AMPLIATA -->
         <div id="whitelist" class="tab-content">
