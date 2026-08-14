@@ -259,7 +259,7 @@
 
         textarea {
             resize: vertical;
-            min-height: 110px;
+            min-height: 100px;
         }
 
         /* Pulsanti */
@@ -429,14 +429,17 @@
                 <div class="header-container">
                     <img src="logo.png" alt="Logo The Last Stand" class="header-logo">
                     <h1>The Last Stand</h1>
-                    <p style="color: var(--primary-red); font-size: 1.2rem; font-weight: 800;">IP: TheLastStand-1.aternos.me</p>
+                    <p style="color: var(--primary-red); font-size: 1.2rem; font-weight: 800;">IP: TheLastStand1.aternos.me</p>
                 </div>
                 <p style="font-size: 1.15rem; color: #cbd5e1; margin-bottom: 2rem;">
                     Sopravvivi all'apocalisse zombie, esplora la metropoli in rovina e costruisci la tua roccaforte. Riuscirai a superare la notte?
                 </p>
-                <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
-                    <button class="btn" style="width: auto; padding: 0.8rem 2rem;" onclick="showTab('whitelist')">Richiedi Whitelist</button>
-                    <button class="btn btn-secondary" style="width: auto; padding: 0.8rem 2rem;" onclick="showTab('lore')">Leggi la Lore</button>
+                
+                <!-- PULSANTI PRINCIPALI -->
+                <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; max-width: 600px; margin: 0 auto;">
+                    <button class="btn" style="flex: 1; min-width: 220px;" onclick="showTab('whitelist')">Richiedi Whitelist</button>
+                    <button class="btn btn-secondary" style="flex: 1; min-width: 220px;" onclick="showTab('lore')">Leggi la Lore</button>
+                    <button class="btn btn-secondary" style="width: 100%; margin-top: 0.5rem;" onclick="showTab('regolamento')">Visualizza Regolamento</button>
                 </div>
             </div>
         </div>
@@ -479,13 +482,13 @@
             </div>
         </div>
 
-        <!-- TAB 3: RICHIESTA WHITELIST -->
+        <!-- TAB 3: RICHIESTA WHITELIST AMPLIATA -->
         <div id="whitelist" class="tab-content">
             <div class="card">
                 <div class="header-container">
                     <img src="logo.png" alt="Logo The Last Stand" class="header-logo">
                     <h1>Richiesta Whitelist</h1>
-                    <p>Entra nel Server Survival Zombie</p>
+                    <p>Compila il modulo per accedere al Server</p>
                 </div>
 
                 <div id="statusWhitelist" class="status-message"></div>
@@ -503,7 +506,7 @@
                     </button>
                 </div>
 
-                <!-- Form Whitelist -->
+                <!-- Form Whitelist Esteso -->
                 <form id="whitelistForm" class="auth-form" style="display: none;" onsubmit="sendWhitelist(event)">
                     <div class="user-info">
                         <img src="" alt="Avatar" class="userAvatar user-avatar">
@@ -514,22 +517,53 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="wlMcUsername">Nickname Minecraft (IGN):</label>
+                        <label for="wlMcUsername">1. Nickname Minecraft (IGN Esatto):</label>
                         <input type="text" id="wlMcUsername" required placeholder="Es. Steve123">
                     </div>
 
                     <div class="form-group">
-                        <label for="wlEta">Età Reale:</label>
+                        <label for="wlEta">2. Età Reale:</label>
                         <input type="number" id="wlEta" min="10" max="99" required placeholder="Es. 17">
                     </div>
 
                     <div class="form-group">
-                        <label for="wlEsperienza">Da quanti anni giochi a Minecraft?</label>
+                        <label for="wlEsperienza">3. Da quanti anni giochi a Minecraft?</label>
                         <input type="text" id="wlEsperienza" required placeholder="Es. 3 anni">
                     </div>
 
                     <div class="form-group">
-                        <label for="wlComeHaiTrovato">Come hai scoperto The Last Stand?</label>
+                        <label for="wlStileGioco">4. Qual è il tuo stile di gioco preferito?</label>
+                        <select id="wlStileGioco" required>
+                            <option value="">Seleziona opzione...</option>
+                            <option value="Costruttore / Base Builder">Costruttore / Rifugi</option>
+                            <option value="Esploratore / Looter">Esploratore / Looting</option>
+                            <option value="Combattente / PvP">Combattente PvP / Cacciatore</option>
+                            <option value="Roleplay / Cooperativo">Cooperativo / Roleplay</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="wlReazioneMorte">5. Se vieni ucciso o derubato in game, come reagisci?</label>
+                        <textarea id="wlReazioneMorte" required placeholder="Spiega brevemente il tuo approccio ed atteggiamento in caso di sconfitta..."></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="wlLoreCheck">6. Cosa succede durante la "Luna di Sangue" (Blood Moon)?</label>
+                        <textarea id="wlLoreCheck" required placeholder="Rispondi dimostrando di aver letto la Lore/Regole del server..."></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="wlMicrofono">7. Hai un microfono e puoi entrare nei canali vocali Discord?</label>
+                        <select id="wlMicrofono" required>
+                            <option value="">Seleziona...</option>
+                            <option value="Sì, uso regolarmente la voce">Sì, posso parlare liberamente</option>
+                            <option value="Solo ascolto">Posso solo ascoltare</option>
+                            <option value="No, solo chat testuale">No, uso solo la chat scritta</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="wlComeHaiTrovato">8. Come hai scoperto The Last Stand?</label>
                         <textarea id="wlComeHaiTrovato" required placeholder="Raccontaci come sei venuto a conoscenza del server..."></textarea>
                     </div>
 
@@ -722,7 +756,7 @@
             }
         };
 
-        // INVIO RICHIESTA WHITELIST
+        // INVIO RICHIESTA WHITELIST ESTESA
         function sendWhitelist(event) {
             event.preventDefault();
 
@@ -747,9 +781,13 @@
                     thumbnail: { url: userAvatarUrl },
                     fields: [
                         { name: "👤 Utente Discord", value: `<@${userData.id}> (${userData.username})`, inline: true },
-                        { name: "🎮 Nickname Minecraft", value: document.getElementById('wlMcUsername').value, inline: true },
+                        { name: "🎮 Nickname MC", value: document.getElementById('wlMcUsername').value, inline: true },
                         { name: "🎂 Età", value: document.getElementById('wlEta').value, inline: true },
-                        { name: "⏳ Anni di Gioco", value: document.getElementById('wlEsperienza').value, inline: false },
+                        { name: "⏳ Anni su Minecraft", value: document.getElementById('wlEsperienza').value, inline: true },
+                        { name: "🎯 Stile di Gioco", value: document.getElementById('wlStileGioco').value, inline: true },
+                        { name: "🎙️ Microfono", value: document.getElementById('wlMicrofono').value, inline: true },
+                        { name: "💀 Reazione in caso di Morte/Looting", value: document.getElementById('wlReazioneMorte').value, inline: false },
+                        { name: "🩸 Conoscenza Luna di Sangue", value: document.getElementById('wlLoreCheck').value, inline: false },
                         { name: "🔎 Come ci ha trovati", value: document.getElementById('wlComeHaiTrovato').value, inline: false }
                     ],
                     footer: { text: "The Last Stand - Sistema Whitelist" },
