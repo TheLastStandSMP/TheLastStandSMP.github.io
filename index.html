@@ -641,18 +641,27 @@
             </div>
         </div>
 
-        <!-- TAB 5: MAPPA INTERATTIVA -->
-        <div id="mappa" class="tab-content">
-            <div class="card">
-                <div class="header-container">
-                    <img src="logo.png" alt="Logo The Last Stand" class="header-logo">
-                    <h1>Mappa Globale</h1>
-                    <p>Mappa Dinamica della Metropoli</p>
-                </div>
-                
-                <div id="mapMinecraft" style="height: 550px; width: 100%; border-radius: 12px; border: 1px solid var(--bg-card-border); background-color: #0d0909; margin-top: 1rem;"></div>
-            </div>
+       <!-- TAB 5: MAPPA INTERATTIVA -->
+<div id="mappa" class="tab-content">
+    <div class="card">
+        <div class="header-container">
+            <img src="logo.png" alt="Logo The Last Stand" class="header-logo">
+            <h1>Mappa Globale</h1>
+            <p>Stato Rete Satellitare</p>
         </div>
+        
+        <!-- SCHERMATA SEGNALE ASSENTE STILE LORE -->
+        <div style="background: rgba(13, 9, 9, 0.9); border: 2px solid var(--primary-red); border-radius: 12px; padding: 3.5rem 1.5rem; text-align: center; margin-top: 1rem; box-shadow: 0 0 20px rgba(255, 46, 46, 0.15);">
+            <div style="font-size: 3rem; margin-bottom: 0.5rem;">📡❌</div>
+            <h2 style="color: var(--primary-red); font-size: 1.8rem; margin-bottom: 0.8rem; text-transform: uppercase; letter-spacing: 2px;">Rete Satellitare Offline</h2>
+            <p style="color: #cbd5e1; font-size: 1rem; max-width: 550px; margin: 0 auto; line-height: 1.6; font-family: monospace;">
+                [ SEGNALE INTERROTTO ]<br>
+                I sistemi di rilevamento topografico non sono più operativi.<br><br>
+                <span style="color: var(--accent-orange);">Nessuna mappa disponibile. L'esplorazione sul campo è l'unico modo per orientarsi nella metropoli.</span>
+            </p>
+        </div>
+    </div>
+</div>
 
         <!-- TAB 6: REGOLAMENTO DETTAGLIATO -->
         <div id="regolamento" class="tab-content">
