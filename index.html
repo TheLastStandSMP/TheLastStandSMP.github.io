@@ -209,12 +209,18 @@
         .user-info {
             display: flex;
             align-items: center;
-            gap: 15px;
+            justify-content: space-between;
             background: rgba(255, 255, 255, 0.05);
             padding: 12px 18px;
             border-radius: 10px;
             margin-bottom: 2rem;
             border: 1px solid rgba(255, 46, 46, 0.2);
+        }
+
+        .user-profile-meta {
+            display: flex;
+            align-items: center;
+            gap: 15px;
         }
 
         .user-avatar {
@@ -312,6 +318,29 @@
             box-shadow: 0 6px 20px rgba(88, 101, 242, 0.6);
         }
 
+        .btn-logout {
+            background: #e74c3c;
+            padding: 0.5rem 0.9rem;
+            font-size: 0.85rem;
+            width: auto;
+            box-shadow: none;
+        }
+
+        .btn-logout:hover {
+            background: #c0392b;
+            box-shadow: 0 2px 10px rgba(231, 76, 60, 0.4);
+        }
+
+        .form-actions {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .form-actions button {
+            flex: 1;
+        }
+
         /* Lore Styles */
         .lore-box {
             background: rgba(0, 0, 0, 0.4);
@@ -392,6 +421,11 @@
             .card {
                 padding: 1.5rem;
             }
+            .user-info {
+                flex-direction: column;
+                gap: 1rem;
+                align-items: flex-start;
+            }
         }
     </style>
 </head>
@@ -445,67 +479,67 @@
         </div>
 
         <!-- TAB 2: LORE DEL SERVER -->
-<div id="lore" class="tab-content">
-    <div class="card">
-        <div class="header-container">
-            <img src="logo.png" alt="Logo The Last Stand" class="header-logo">
-            <h1>La Caduta di Blackwood</h1>
-            <p>Cronache dell'Apocalisse — Estate 1994</p>
+        <div id="lore" class="tab-content">
+            <div class="card">
+                <div class="header-container">
+                    <img src="logo.png" alt="Logo The Last Stand" class="header-logo">
+                    <h1>La Caduta di Blackwood</h1>
+                    <p>Cronache dell'Apocalisse — Estate 1994</p>
+                </div>
+
+                <div style="margin-top: 1.5rem; text-align: left;">
+                    
+                    <!-- CAPITOLO 1 -->
+                    <div style="border-left: 3px solid var(--primary-red); padding-left: 1rem; margin-bottom: 2rem; background: rgba(0,0,0,0.2); padding: 1rem; border-radius: 0 8px 8px 0;">
+                        <h3 style="color: var(--primary-red); font-size: 1.2rem; margin-bottom: 0.5rem; text-transform: uppercase;">1. Il Contagio del '94</h3>
+                        <p style="color: var(--text-light); font-size: 0.95rem; line-height: 1.7;">
+                            Niente computer o satelliti moderni. Negli Stati Uniti del 1994, la fine del mondo è arrivata attraverso l'acqua potabile contaminata da un esperimento militare segreto insabbiato dal Governo. In poche settimane le linee telefoniche sono morte, le autostrade sono state sbarrate dall'esercito e la civiltà è collassata nell'analogico.
+                        </p>
+                    </div>
+
+                    <!-- CAPITOLO 2 -->
+                    <div style="border-left: 3px solid var(--accent-orange); padding-left: 1rem; margin-bottom: 2rem; background: rgba(0,0,0,0.2); padding: 1rem; border-radius: 0 8px 8px 0;">
+                        <h3 style="color: var(--accent-orange); font-size: 1.2rem; margin-bottom: 0.5rem; text-transform: uppercase;">2. La Zona Rossa: Blackwood</h3>
+                        <p style="color: var(--text-light); font-size: 0.95rem; line-height: 1.7;">
+                            La cittadina di Blackwood è ora una trappola mortale circondata da vecchi motel fatiscenti, diner abbandonati e cabine telefoniche fuori uso. Senza elettricità stabile, i sopravvissuti devono lottare ogni giorno contro orde di infetti e la disperazione della fame.
+                        </p>
+                    </div>
+
+                    <!-- FAZIONI E RUOLI -->
+                    <h2 style="color: var(--text-light); font-size: 1.4rem; margin: 2rem 0 1rem 0; border-bottom: 1px solid var(--bg-card-border); padding-bottom: 0.5rem;">
+                        ⚖️ Chi Anima le Strade
+                    </h2>
+
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1rem; margin-bottom: 2rem;">
+                        <!-- RUOLO 1 -->
+                        <div style="background: rgba(0,0,0,0.5); border: 1px solid var(--bg-card-border); border-radius: 8px; padding: 1rem;">
+                            <h4 style="color: var(--primary-red); margin-bottom: 0.5rem;">✊ La Resistenza</h4>
+                            <p style="color: var(--text-muted); font-size: 0.85rem;">Un gruppo organizzato che si unisce per difendere i propri rifugi, condividere le risorse e combattere l'oppressione di ciò che resta del vecchio regime.</p>
+                        </div>
+
+                        <!-- RUOLO 2 -->
+                        <div style="background: rgba(0,0,0,0.5); border: 1px solid var(--bg-card-border); border-radius: 8px; padding: 1rem;">
+                            <h4 style="color: var(--accent-orange); margin-bottom: 0.5rem;">🎒 I Vagabondi</h4>
+                            <p style="color: var(--text-muted); font-size: 0.85rem;">Cani sciolti e nomadi che viaggiano leggeri, senza legami fissi. Si affidano unicamente al proprio istinto e alla fortuna per superare un altro giorno a Blackwood.</p>
+                        </div>
+
+                        <!-- RUOLO 3 -->
+                        <div style="background: rgba(0,0,0,0.5); border: 1px solid var(--bg-card-border); border-radius: 8px; padding: 1rem;">
+                            <h4 style="color: var(--text-gold); margin-bottom: 0.5rem;">👮 I Federali</h4>
+                            <p style="color: var(--text-muted); font-size: 0.85rem;">Ex forze dell'ordine e agenti rimasti tagliati fuori dal mondo. Occupano barricate fortificate e pretendono disciplina e controllo su chiunque attraversi il loro territorio.</p>
+                        </div>
+                    </div>
+
+                    <!-- CHIAMATA ALL'AZIONE -->
+                    <div style="background: rgba(255, 46, 46, 0.15); border: 1px dashed var(--primary-red); border-radius: 8px; padding: 1.2rem; text-align: center;">
+                        <p style="color: var(--text-light); font-weight: 600; margin: 0;">
+                            Sintonizzati sulla frequenza radio di emergenza. Da che parte scriverai la tua storia in questo 1994 senza via d'uscita?
+                        </p>
+                    </div>
+
+                </div>
+            </div>
         </div>
-
-        <div style="margin-top: 1.5rem; text-align: left;">
-            
-            <!-- CAPITOLO 1 -->
-            <div style="border-left: 3px solid var(--primary-red); padding-left: 1rem; margin-bottom: 2rem; background: rgba(0,0,0,0.2); padding: 1rem; border-radius: 0 8px 8px 0;">
-                <h3 style="color: var(--primary-red); font-size: 1.2rem; margin-bottom: 0.5rem; text-transform: uppercase;">1. Il Contagio del '94</h3>
-                <p style="color: var(--text-light); font-size: 0.95rem; line-height: 1.7;">
-                    Niente computer o satelliti moderni. Negli Stati Uniti del 1994, la fine del mondo è arrivata attraverso l'acqua potabile contaminata da un esperimento militare segreto insabbiato dal Governo. In poche settimane le linee telefoniche sono morte, le autostrade sono state sbarrate dall'esercito e la civiltà è collassata nell'analogico.
-                </p>
-            </div>
-
-            <!-- CAPITOLO 2 -->
-            <div style="border-left: 3px solid var(--accent-orange); padding-left: 1rem; margin-bottom: 2rem; background: rgba(0,0,0,0.2); padding: 1rem; border-radius: 0 8px 8px 0;">
-                <h3 style="color: var(--accent-orange); font-size: 1.2rem; margin-bottom: 0.5rem; text-transform: uppercase;">2. La Zona Rossa: Blackwood</h3>
-                <p style="color: var(--text-light); font-size: 0.95rem; line-height: 1.7;">
-                    La cittadina di Blackwood è ora una trappola mortale circondata da vecchi motel fatiscenti, diner abbandonati e cabine telefoniche fuori uso. Senza elettricità stabile, i sopravvissuti devono lottare ogni giorno contro orde di infetti e la disperazione della fame.
-                </p>
-            </div>
-
-            <!-- FAZIONI E RUOLI -->
-            <h2 style="color: var(--text-light); font-size: 1.4rem; margin: 2rem 0 1rem 0; border-bottom: 1px solid var(--bg-card-border); padding-bottom: 0.5rem;">
-                ⚖️ Chi Anima le Strade
-            </h2>
-
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1rem; margin-bottom: 2rem;">
-                <!-- RUOLO 1 -->
-                <div style="background: rgba(0,0,0,0.5); border: 1px solid var(--bg-card-border); border-radius: 8px; padding: 1rem;">
-                    <h4 style="color: var(--primary-red); margin-bottom: 0.5rem;">✊ La Resistenza</h4>
-                    <p style="color: var(--text-muted); font-size: 0.85rem;">Un gruppo organizzato che si unisce per difendere i propri rifugi, condividere le risorse e combattere l'oppressione di ciò che resta del vecchio regime.</p>
-                </div>
-
-                <!-- RUOLO 2 -->
-                <div style="background: rgba(0,0,0,0.5); border: 1px solid var(--bg-card-border); border-radius: 8px; padding: 1rem;">
-                    <h4 style="color: var(--accent-orange); margin-bottom: 0.5rem;">🎒 I Vagabondi</h4>
-                    <p style="color: var(--text-muted); font-size: 0.85rem;">Cani sciolti e nomadi che viaggiano leggeri, senza legami fissi. Si affidano unicamente al proprio istinto e alla fortuna per superare un altro giorno a Blackwood.</p>
-                </div>
-
-                <!-- RUOLO 3 -->
-                <div style="background: rgba(0,0,0,0.5); border: 1px solid var(--bg-card-border); border-radius: 8px; padding: 1rem;">
-                    <h4 style="color: var(--text-gold); margin-bottom: 0.5rem;">👮 I Federali</h4>
-                    <p style="color: var(--text-muted); font-size: 0.85rem;">Ex forze dell'ordine e agenti rimasti tagliati fuori dal mondo. Occupano barricate fortificate e pretendono disciplina e controllo su chiunque attraversi il loro territorio.</p>
-                </div>
-            </div>
-
-            <!-- CHIAMATA ALL'AZIONE -->
-            <div style="background: rgba(255, 46, 46, 0.15); border: 1px dashed var(--primary-red); border-radius: 8px; padding: 1.2rem; text-align: center;">
-                <p style="color: var(--text-light); font-weight: 600; margin: 0;">
-                    Sintonizzati sulla frequenza radio di emergenza. Da che parte scriverai la tua storia in questo 1994 senza via d'uscita?
-                </p>
-            </div>
-
-        </div>
-    </div>
-</div>
 
         <!-- TAB 3: RICHIESTA WHITELIST AMPLIATA -->
         <div id="whitelist" class="tab-content">
@@ -534,31 +568,34 @@
                 <!-- Form Whitelist Esteso -->
                 <form id="whitelistForm" class="auth-form" style="display: none;" onsubmit="sendWhitelist(event)">
                     <div class="user-info">
-                        <img src="" alt="Avatar" class="userAvatar user-avatar">
-                        <div>
-                            <div class="userName" style="font-weight: 700; color: #fff;"></div>
-                            <div class="userId" style="font-size: 0.8rem; color: var(--text-muted);"></div>
+                        <div class="user-profile-meta">
+                            <img src="" alt="Avatar" class="userAvatar user-avatar">
+                            <div>
+                                <div class="userName" style="font-weight: 700; color: #fff;"></div>
+                                <div class="userId" style="font-size: 0.8rem; color: var(--text-muted);"></div>
+                            </div>
                         </div>
+                        <button type="button" class="btn btn-logout" onclick="logoutDiscord()">Esci / Logout</button>
                     </div>
 
                     <div class="form-group">
                         <label for="wlMcUsername">1. Nickname Minecraft (IGN Esatto):</label>
-                        <input type="text" id="wlMcUsername" required placeholder="Es. Steve123">
+                        <input type="text" id="wlMcUsername" required placeholder="Es. Steve123" oninput="saveDraft('whitelist')">
                     </div>
 
                     <div class="form-group">
                         <label for="wlEta">2. Età Reale:</label>
-                        <input type="number" id="wlEta" min="10" max="99" required placeholder="Es. 17">
+                        <input type="number" id="wlEta" min="10" max="99" required placeholder="Es. 17" oninput="saveDraft('whitelist')">
                     </div>
 
                     <div class="form-group">
                         <label for="wlEsperienza">3. Da quanti anni giochi a Minecraft?</label>
-                        <input type="text" id="wlEsperienza" required placeholder="Es. 3 anni">
+                        <input type="text" id="wlEsperienza" required placeholder="Es. 3 anni" oninput="saveDraft('whitelist')">
                     </div>
 
                     <div class="form-group">
                         <label for="wlStileGioco">4. Qual è il tuo stile di gioco preferito?</label>
-                        <select id="wlStileGioco" required>
+                        <select id="wlStileGioco" required onchange="saveDraft('whitelist')">
                             <option value="">Seleziona opzione...</option>
                             <option value="Costruttore / Base Builder">Costruttore / Rifugi</option>
                             <option value="Esploratore / Looter">Esploratore / Looting</option>
@@ -569,17 +606,17 @@
 
                     <div class="form-group">
                         <label for="wlReazioneMorte">5. Se vieni ucciso o derubato in game, come reagisci?</label>
-                        <textarea id="wlReazioneMorte" required placeholder="Spiega brevemente il tuo approccio ed atteggiamento in caso di sconfitta..."></textarea>
+                        <textarea id="wlReazioneMorte" required placeholder="Spiega brevemente il tuo approccio ed atteggiamento in caso di sconfitta..." oninput="saveDraft('whitelist')"></textarea>
                     </div>
 
                     <div class="form-group">
                         <label for="wlLoreCheck">6. Cosa succede durante la "Luna di Sangue" (Blood Moon)?</label>
-                        <textarea id="wlLoreCheck" required placeholder="Rispondi dimostrando di aver letto la Lore/Regole del server..."></textarea>
+                        <textarea id="wlLoreCheck" required placeholder="Rispondi dimostrando di aver letto la Lore/Regole del server..." oninput="saveDraft('whitelist')"></textarea>
                     </div>
 
                     <div class="form-group">
                         <label for="wlMicrofono">7. Hai un microfono e puoi entrare nei canali vocali Discord?</label>
-                        <select id="wlMicrofono" required>
+                        <select id="wlMicrofono" required onchange="saveDraft('whitelist')">
                             <option value="">Seleziona...</option>
                             <option value="Sì, uso regolarmente la voce">Sì, posso parlare liberamente</option>
                             <option value="Solo ascolto">Posso solo ascoltare</option>
@@ -589,10 +626,13 @@
 
                     <div class="form-group">
                         <label for="wlComeHaiTrovato">8. Come hai scoperto The Last Stand?</label>
-                        <textarea id="wlComeHaiTrovato" required placeholder="Raccontaci come sei venuto a conoscenza del server..."></textarea>
+                        <textarea id="wlComeHaiTrovato" required placeholder="Raccontaci come sei venuto a conoscenza del server..." oninput="saveDraft('whitelist')"></textarea>
                     </div>
 
-                    <button type="submit" id="submitWlBtn" class="btn">Invia Richiesta Whitelist</button>
+                    <div class="form-actions">
+                        <button type="button" class="btn btn-secondary" onclick="manualSaveMessage('whitelist')">💾 Salva Bozza</button>
+                        <button type="submit" id="submitWlBtn" class="btn">Invia Richiesta Whitelist</button>
+                    </div>
                 </form>
             </div>
         </div>
@@ -624,26 +664,29 @@
                 <!-- Form Candidatura Staff -->
                 <form id="applicationForm" class="auth-form" style="display: none;" onsubmit="sendApplication(event)">
                     <div class="user-info">
-                        <img src="" alt="Avatar" class="userAvatar user-avatar">
-                        <div>
-                            <div class="userName" style="font-weight: 700; color: #fff;"></div>
-                            <div class="userId" style="font-size: 0.8rem; color: var(--text-muted);"></div>
+                        <div class="user-profile-meta">
+                            <img src="" alt="Avatar" class="userAvatar user-avatar">
+                            <div>
+                                <div class="userName" style="font-weight: 700; color: #fff;"></div>
+                                <div class="userId" style="font-size: 0.8rem; color: var(--text-muted);"></div>
+                            </div>
                         </div>
+                        <button type="button" class="btn btn-logout" onclick="logoutDiscord()">Esci / Logout</button>
                     </div>
 
                     <div class="form-group">
                         <label for="mcUsername">Nickname Minecraft (IGN):</label>
-                        <input type="text" id="mcUsername" required placeholder="Es. Player123">
+                        <input type="text" id="mcUsername" required placeholder="Es. Player123" oninput="saveDraft('application')">
                     </div>
 
                     <div class="form-group">
                         <label for="etaOOC">Età Reale:</label>
-                        <input type="number" id="etaOOC" min="12" max="99" required placeholder="Es. 16">
+                        <input type="number" id="etaOOC" min="12" max="99" required placeholder="Es. 16" oninput="saveDraft('application')">
                     </div>
 
                     <div class="form-group">
                         <label for="ruolo">Ruolo per cui ti candidi:</label>
-                        <select id="ruolo" required>
+                        <select id="ruolo" required onchange="saveDraft('application')">
                             <option value="">Seleziona un ruolo...</option>
                             <option value="Helper">Helper / Moderatore</option>
                             <option value="Builder">Builder / Costruttore</option>
@@ -653,40 +696,43 @@
 
                     <div class="form-group">
                         <label for="esperienze">Esperienze Passate:</label>
-                        <textarea id="esperienze" required placeholder="Elenca eventuali esperienze pregresse nello staff..."></textarea>
+                        <textarea id="esperienze" required placeholder="Elenca eventuali esperienze pregresse nello staff..." oninput="saveDraft('application')"></textarea>
                     </div>
 
                     <div class="form-group">
                         <label for="motivazione">Perché vuoi far parte di The Last Stand?</label>
-                        <textarea id="motivazione" required placeholder="Spiega quali idee e contributo intendi portare nel server..."></textarea>
+                        <textarea id="motivazione" required placeholder="Spiega quali idee e contributo intendi portare nel server..." oninput="saveDraft('application')"></textarea>
                     </div>
 
-                    <button type="submit" id="submitBtn" class="btn">Invia Candidatura Staff</button>
+                    <div class="form-actions">
+                        <button type="button" class="btn btn-secondary" onclick="manualSaveMessage('application')">💾 Salva Bozza</button>
+                        <button type="submit" id="submitBtn" class="btn">Invia Candidatura Staff</button>
+                    </div>
                 </form>
             </div>
         </div>
 
-       <!-- TAB 5: MAPPA INTERATTIVA -->
-<div id="mappa" class="tab-content">
-    <div class="card">
-        <div class="header-container">
-            <img src="logo.png" alt="Logo The Last Stand" class="header-logo">
-            <h1>Mappa Globale</h1>
-            <p>Stato Rete Satellitare</p>
+        <!-- TAB 5: MAPPA INTERATTIVA -->
+        <div id="mappa" class="tab-content">
+            <div class="card">
+                <div class="header-container">
+                    <img src="logo.png" alt="Logo The Last Stand" class="header-logo">
+                    <h1>Mappa Globale</h1>
+                    <p>Stato Rete Satellitare</p>
+                </div>
+                
+                <!-- SCHERMATA SEGNALE ASSENTE STILE LORE -->
+                <div style="background: rgba(13, 9, 9, 0.9); border: 2px solid var(--primary-red); border-radius: 12px; padding: 3.5rem 1.5rem; text-align: center; margin-top: 1rem; box-shadow: 0 0 20px rgba(255, 46, 46, 0.15);">
+                    <div style="font-size: 3rem; margin-bottom: 0.5rem;">📡❌</div>
+                    <h2 style="color: var(--primary-red); font-size: 1.8rem; margin-bottom: 0.8rem; text-transform: uppercase; letter-spacing: 2px;">Rete Satellitare Offline</h2>
+                    <p style="color: #cbd5e1; font-size: 1rem; max-width: 550px; margin: 0 auto; line-height: 1.6; font-family: monospace;">
+                        [ SEGNALE INTERROTTO ]<br>
+                        I sistemi di rilevamento topografico non sono più operativi.<br><br>
+                        <span style="color: var(--accent-orange);">Nessuna mappa disponibile. Esplora la città a tuo rischio e pericolo.</span>
+                    </p>
+                </div>
+            </div>
         </div>
-        
-        <!-- SCHERMATA SEGNALE ASSENTE STILE LORE -->
-        <div style="background: rgba(13, 9, 9, 0.9); border: 2px solid var(--primary-red); border-radius: 12px; padding: 3.5rem 1.5rem; text-align: center; margin-top: 1rem; box-shadow: 0 0 20px rgba(255, 46, 46, 0.15);">
-            <div style="font-size: 3rem; margin-bottom: 0.5rem;">📡❌</div>
-            <h2 style="color: var(--primary-red); font-size: 1.8rem; margin-bottom: 0.8rem; text-transform: uppercase; letter-spacing: 2px;">Rete Satellitare Offline</h2>
-            <p style="color: #cbd5e1; font-size: 1rem; max-width: 550px; margin: 0 auto; line-height: 1.6; font-family: monospace;">
-                [ SEGNALE INTERROTTO ]<br>
-                I sistemi di rilevamento topografico non sono più operativi.<br><br>
-                <span style="color: var(--accent-orange);">Nessuna mappa disponibile. Esplora la città a tuo rischio e pericolo.</span>
-            </p>
-        </div>
-    </div>
-</div>
 
         <!-- TAB 6: REGOLAMENTO DETTAGLIATO -->
         <div id="regolamento" class="tab-content">
@@ -759,37 +805,134 @@
             window.location.href = authUrl;
         }
 
+        function logoutDiscord() {
+            localStorage.removeItem('discord_access_token');
+            localStorage.removeItem('discord_user');
+            userData = null;
+            
+            // Ripristina la UI dei form
+            document.querySelectorAll('.auth-form').forEach(el => el.style.display = 'none');
+            document.querySelectorAll('.discordAuthSection').forEach(el => el.style.display = 'block');
+            
+            // Pulisce i campi dei form
+            document.getElementById('whitelistForm').reset();
+            document.getElementById('applicationForm').reset();
+            localStorage.removeItem('draft_whitelist');
+            localStorage.removeItem('draft_application');
+            
+            window.history.replaceState({}, document.title, window.location.pathname);
+        }
+
+        // GESTIONE BOZZE LOCALSTORAGE
+        function saveDraft(formType) {
+            if (formType === 'whitelist') {
+                const draft = {
+                    wlMcUsername: document.getElementById('wlMcUsername').value,
+                    wlEta: document.getElementById('wlEta').value,
+                    wlEsperienza: document.getElementById('wlEsperienza').value,
+                    wlStileGioco: document.getElementById('wlStileGioco').value,
+                    wlReazioneMorte: document.getElementById('wlReazioneMorte').value,
+                    wlLoreCheck: document.getElementById('wlLoreCheck').value,
+                    wlMicrofono: document.getElementById('wlMicrofono').value,
+                    wlComeHaiTrovato: document.getElementById('wlComeHaiTrovato').value
+                };
+                localStorage.setItem('draft_whitelist', JSON.stringify(draft));
+            } else if (formType === 'application') {
+                const draft = {
+                    mcUsername: document.getElementById('mcUsername').value,
+                    etaOOC: document.getElementById('etaOOC').value,
+                    ruolo: document.getElementById('ruolo').value,
+                    esperienze: document.getElementById('esperienze').value,
+                    motivazione: document.getElementById('motivazione').value
+                };
+                localStorage.setItem('draft_application', JSON.stringify(draft));
+            }
+        }
+
+        function loadDraft(formType) {
+            if (formType === 'whitelist') {
+                const saved = localStorage.getItem('draft_whitelist');
+                if (saved) {
+                    const draft = JSON.parse(saved);
+                    document.getElementById('wlMcUsername').value = draft.wlMcUsername || '';
+                    document.getElementById('wlEta').value = draft.wlEta || '';
+                    document.getElementById('wlEsperienza').value = draft.wlEsperienza || '';
+                    document.getElementById('wlStileGioco').value = draft.wlStileGioco || '';
+                    document.getElementById('wlReazioneMorte').value = draft.wlReazioneMorte || '';
+                    document.getElementById('wlLoreCheck').value = draft.wlLoreCheck || '';
+                    document.getElementById('wlMicrofono').value = draft.wlMicrofono || '';
+                    document.getElementById('wlComeHaiTrovato').value = draft.wlComeHaiTrovato || '';
+                }
+            } else if (formType === 'application') {
+                const saved = localStorage.getItem('draft_application');
+                if (saved) {
+                    const draft = JSON.parse(saved);
+                    document.getElementById('mcUsername').value = draft.mcUsername || '';
+                    document.getElementById('etaOOC').value = draft.etaOOC || '';
+                    document.getElementById('ruolo').value = draft.ruolo || '';
+                    document.getElementById('esperienze').value = draft.esperienze || '';
+                    document.getElementById('motivazione').value = draft.motivazione || '';
+                }
+            }
+        }
+
+        function manualSaveMessage(formType) {
+            saveDraft(formType);
+            const statusId = formType === 'whitelist' ? 'statusWhitelist' : 'statusMessage';
+            showStatus(statusId, 'Bozza salvata con successo sul browser!', 'success');
+        }
+
+        function applyUserData(user) {
+            userData = user;
+            document.querySelectorAll('.discordAuthSection').forEach(el => el.style.display = 'none');
+            document.querySelectorAll('.auth-form').forEach(el => el.style.display = 'block');
+            
+            const avatarUrl = user.avatar 
+                ? `https://cdn.discordapp.com/avatars/${user.id}/${user.avatar}.png`
+                : 'https://cdn.discordapp.com/embed/avatars/0.png';
+
+            document.querySelectorAll('.userName').forEach(el => el.innerText = `${user.username}`);
+            document.querySelectorAll('.userId').forEach(el => el.innerText = `ID Discord: ${user.id}`);
+            document.querySelectorAll('.userAvatar').forEach(el => el.src = avatarUrl);
+
+            // Carica le rispettive bozze salvate in precedenza
+            loadDraft('whitelist');
+            loadDraft('application');
+        }
+
         window.onload = function() {
             const fragment = new URLSearchParams(window.location.hash.slice(1));
             const accessToken = fragment.get('access_token');
             const targetTab = fragment.get('state') || 'home';
 
             if (accessToken) {
+                localStorage.setItem('discord_access_token', accessToken);
                 window.history.replaceState({}, document.title, window.location.pathname);
-                showTab(targetTab);
+            }
 
-                fetch('https://discord.com/api/users/@me', {
-                    headers: { authorization: `Bearer ${accessToken}` }
-                })
-                .then(res => res.json())
-                .then(user => {
-                    if (user.id) {
-                        userData = user;
-                        
-                        document.querySelectorAll('.discordAuthSection').forEach(el => el.style.display = 'none');
-                        document.querySelectorAll('.auth-form').forEach(el => el.style.display = 'block');
-                        
-                        const avatarUrl = user.avatar 
-                            ? `https://cdn.discordapp.com/avatars/${user.id}/${user.avatar}.png`
-                            : 'https://cdn.discordapp.com/embed/avatars/0.png';
+            const storedToken = localStorage.getItem('discord_access_token');
+            const cachedUser = localStorage.getItem('discord_user');
 
-                        document.querySelectorAll('.userName').forEach(el => el.innerText = `${user.username}`);
-                        document.querySelectorAll('.userId').forEach(el => el.innerText = `ID Discord: ${user.id}`);
-                        document.querySelectorAll('.userAvatar').forEach(el => el.src = avatarUrl);
-                    }
-                });
-            } else {
-                showTab(targetTab);
+            showTab(targetTab);
+
+            if (storedToken) {
+                if (cachedUser) {
+                    applyUserData(JSON.parse(cachedUser));
+                } else {
+                    fetch('https://discord.com/api/users/@me', {
+                        headers: { authorization: `Bearer ${storedToken}` }
+                    })
+                    .then(res => res.json())
+                    .then(user => {
+                        if (user.id) {
+                            localStorage.setItem('discord_user', JSON.stringify(user));
+                            applyUserData(user);
+                        } else {
+                            logoutDiscord();
+                        }
+                    })
+                    .catch(() => logoutDiscord());
+                }
             }
         };
 
@@ -841,6 +984,7 @@
                 if (response.ok) {
                     showStatus('statusWhitelist', 'Richiesta Whitelist inviata con successo!', 'success');
                     document.getElementById('whitelistForm').reset();
+                    localStorage.removeItem('draft_whitelist');
                 } else {
                     showStatus('statusWhitelist', 'Errore durante l\'invio.', 'error');
                 }
@@ -899,6 +1043,7 @@
                 if (response.ok) {
                     showStatus('statusMessage', 'Candidatura Staff inviata con successo!', 'success');
                     document.getElementById('applicationForm').reset();
+                    localStorage.removeItem('draft_application');
                 } else {
                     showStatus('statusMessage', 'Errore durante l\'invio.', 'error');
                 }
