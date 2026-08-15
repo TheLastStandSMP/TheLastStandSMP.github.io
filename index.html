@@ -565,7 +565,7 @@
                     </button>
                 </div>
 
-                <!-- Form Whitelist Esteso -->
+                <!-- Form Whitelist Strutturato in Sezioni -->
                 <form id="whitelistForm" class="auth-form" style="display: none;" onsubmit="sendWhitelist(event)">
                     <div class="user-info">
                         <div class="user-profile-meta">
@@ -578,55 +578,100 @@
                         <button type="button" class="btn btn-logout" onclick="logoutDiscord()">Esci / Logout</button>
                     </div>
 
-                    <div class="form-group">
-                        <label for="wlMcUsername">1. Nickname Minecraft (IGN Esatto):</label>
-                        <input type="text" id="wlMcUsername" required placeholder="Es. Steve123" oninput="saveDraft('whitelist')">
+                    <!-- SEZIONE 1: DATI PERSONAGGIO -->
+                    <div style="background: rgba(10, 8, 8, 0.6); border: 1px solid rgba(255, 46, 46, 0.3); border-radius: 12px; padding: 1.5rem; margin-bottom: 1.5rem;">
+                        <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 1.2rem; border-bottom: 1px solid rgba(255, 46, 46, 0.2); padding-bottom: 0.8rem;">
+                            <span style="font-size: 1.3rem;">🪪</span>
+                            <div>
+                                <h3 style="font-size: 1rem; color: #fff; letter-spacing: 1px;">DATI ANAGRAFICI DEL PERSONAGGIO</h3>
+                                <span style="font-size: 0.75rem; color: var(--accent-orange); text-transform: uppercase; letter-spacing: 1px;">The Last Stand — Sezione 1</span>
+                            </div>
+                        </div>
+
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem;">
+                            <div class="form-group" style="margin-bottom: 0;">
+                                <label for="wlNomePg">NOME PERSONAGGIO *</label>
+                                <input type="text" id="wlNomePg" required placeholder="Es. Frank" oninput="saveDraft('whitelist')">
+                            </div>
+                            <div class="form-group" style="margin-bottom: 0;">
+                                <label for="wlCognomePg">COGNOME PERSONAGGIO *</label>
+                                <input type="text" id="wlCognomePg" required placeholder="Es. Castle" oninput="saveDraft('whitelist')">
+                            </div>
+                        </div>
+
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                            <div class="form-group" style="margin-bottom: 0;">
+                                <label for="wlMcUsername">NICKNAME MINECRAFT (IGN) *</label>
+                                <input type="text" id="wlMcUsername" required placeholder="Es. Steve123" oninput="saveDraft('whitelist')">
+                            </div>
+                            <div class="form-group" style="margin-bottom: 0;">
+                                <label for="wlEta">ETÀ REALE *</label>
+                                <input type="number" id="wlEta" min="10" max="99" required placeholder="Es. 17" oninput="saveDraft('whitelist')">
+                            </div>
+                        </div>
                     </div>
 
-                    <div class="form-group">
-                        <label for="wlEta">2. Età Reale:</label>
-                        <input type="number" id="wlEta" min="10" max="99" required placeholder="Es. 17" oninput="saveDraft('whitelist')">
+                    <!-- SEZIONE 2: LORE E APPROCCIO DI GIOCO -->
+                    <div style="background: rgba(10, 8, 8, 0.6); border: 1px solid rgba(255, 46, 46, 0.3); border-radius: 12px; padding: 1.5rem; margin-bottom: 1.5rem;">
+                        <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 1.2rem; border-bottom: 1px solid rgba(255, 46, 46, 0.2); padding-bottom: 0.8rem;">
+                            <span style="font-size: 1.3rem;">📜</span>
+                            <div>
+                                <h3 style="font-size: 1rem; color: #fff; letter-spacing: 1px;">SOPRAVVIVENZA E LORE</h3>
+                                <span style="font-size: 0.75rem; color: var(--accent-orange); text-transform: uppercase; letter-spacing: 1px;">The Last Stand — Sezione 2</span>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="wlStileGioco">FAZIONE O STILE DI VITA PREFERITO *</label>
+                            <select id="wlStileGioco" required onchange="saveDraft('whitelist')">
+                                <option value="">Seleziona fazione/stile...</option>
+                                <option value="Resistenza">La Resistenza (Difesa e Rifugi organizzati)</option>
+                                <option value="Vagabondi">I Vagabondi (Nomadi solitari / Looter)</option>
+                                <option value="Federali">I Federali (Ex forze dell'ordine / Controllo)</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="wlReazioneMorte">COME AFFRONTERESTI LA PERDITA DEI TUOI BENI O UNA RAPINA IN GAME? *</label>
+                            <textarea id="wlReazioneMorte" required placeholder="Descrivi il comportamento del tuo personaggio in situazioni di pericolo o sconfitta..." oninput="saveDraft('whitelist')"></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="wlLoreCheck">COSA COMPORTA L'ARRIVO DELLA "LUNA DI SANGUE" A BLACKWOOD? *</label>
+                            <textarea id="wlLoreCheck" required placeholder="Dimostra di conoscere le dinamiche dell'apocalisse di Blackwood..." oninput="saveDraft('whitelist')"></textarea>
+                        </div>
                     </div>
 
-                    <div class="form-group">
-                        <label for="wlEsperienza">3. Da quanti anni giochi a Minecraft?</label>
-                        <input type="text" id="wlEsperienza" required placeholder="Es. 3 anni" oninput="saveDraft('whitelist')">
-                    </div>
+                    <!-- SEZIONE 3: REQUISITI TECNICI -->
+                    <div style="background: rgba(10, 8, 8, 0.6); border: 1px solid rgba(255, 46, 46, 0.3); border-radius: 12px; padding: 1.5rem; margin-bottom: 1.5rem;">
+                        <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 1.2rem; border-bottom: 1px solid rgba(255, 46, 46, 0.2); padding-bottom: 0.8rem;">
+                            <span style="font-size: 1.3rem;">⚙️</span>
+                            <div>
+                                <h3 style="font-size: 1rem; color: #fff; letter-spacing: 1px;">REQUISITI TECNICI & INFO</h3>
+                                <span style="font-size: 0.75rem; color: var(--accent-orange); text-transform: uppercase; letter-spacing: 1px;">The Last Stand — Sezione 3</span>
+                            </div>
+                        </div>
 
-                    <div class="form-group">
-                        <label for="wlStileGioco">4. Qual è il tuo stile di gioco preferito?</label>
-                        <select id="wlStileGioco" required onchange="saveDraft('whitelist')">
-                            <option value="">Seleziona opzione...</option>
-                            <option value="Costruttore / Base Builder">Costruttore / Rifugi</option>
-                            <option value="Esploratore / Looter">Esploratore / Looting</option>
-                            <option value="Combattente / PvP">Combattente PvP / Cacciatore</option>
-                            <option value="Roleplay / Cooperativo">Cooperativo / Roleplay</option>
-                        </select>
-                    </div>
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem;">
+                            <div class="form-group" style="margin-bottom: 0;">
+                                <label for="wlEsperienza">ANNI DI ESPERIENZA SU MINECRAFT *</label>
+                                <input type="text" id="wlEsperienza" required placeholder="Es. 3 anni" oninput="saveDraft('whitelist')">
+                            </div>
+                            <div class="form-group" style="margin-bottom: 0;">
+                                <label for="wlMicrofono">DISPONIBILITÀ VOCALE (DISCORD) *</label>
+                                <select id="wlMicrofono" required onchange="saveDraft('whitelist')">
+                                    <option value="">Seleziona...</option>
+                                    <option value="Sì, uso voce regolarmente">Sì, posso parlare</option>
+                                    <option value="Solo ascolto">Solo ascolto</option>
+                                    <option value="No, solo chat testuale">No, solo chat scritta</option>
+                                </select>
+                            </div>
+                        </div>
 
-                    <div class="form-group">
-                        <label for="wlReazioneMorte">5. Se vieni ucciso o derubato in game, come reagisci?</label>
-                        <textarea id="wlReazioneMorte" required placeholder="Spiega brevemente il tuo approccio ed atteggiamento in caso di sconfitta..." oninput="saveDraft('whitelist')"></textarea>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="wlLoreCheck">6. Cosa succede durante la "Luna di Sangue" (Blood Moon)?</label>
-                        <textarea id="wlLoreCheck" required placeholder="Rispondi dimostrando di aver letto la Lore/Regole del server..." oninput="saveDraft('whitelist')"></textarea>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="wlMicrofono">7. Hai un microfono e puoi entrare nei canali vocali Discord?</label>
-                        <select id="wlMicrofono" required onchange="saveDraft('whitelist')">
-                            <option value="">Seleziona...</option>
-                            <option value="Sì, uso regolarmente la voce">Sì, posso parlare liberamente</option>
-                            <option value="Solo ascolto">Posso solo ascoltare</option>
-                            <option value="No, solo chat testuale">No, uso solo la chat scritta</option>
-                        </select>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="wlComeHaiTrovato">8. Come hai scoperto The Last Stand?</label>
-                        <textarea id="wlComeHaiTrovato" required placeholder="Raccontaci come sei venuto a conoscenza del server..." oninput="saveDraft('whitelist')"></textarea>
+                        <div class="form-group" style="margin-bottom: 0;">
+                            <label for="wlComeHaiTrovato">COME HAI SCOPERTO IL SERVER? *</label>
+                            <textarea id="wlComeHaiTrovato" required placeholder="Raccontaci come sei venuto a conoscenza di The Last Stand..." style="min-height: 70px;" oninput="saveDraft('whitelist')"></textarea>
+                        </div>
                     </div>
 
                     <div class="form-actions">
