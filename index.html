@@ -18,11 +18,12 @@
     <style>
         :root {
             --bg-dark: #0a0808;
-            --bg-card: rgba(22, 16, 16, 0.88);
-            --bg-card-border: rgba(255, 140, 0, 0.35);
-            --primary-orange: #ff8c00;
+            --bg-card: rgba(18, 12, 10, 0.92);
+            --bg-card-border: rgba(243, 156, 18, 0.4);
             --primary-red: #ff2e2e;
             --primary-red-hover: #d61c1c;
+            --accent-orange: #ff6b2b;
+            --accent-amber: #f39c12;
             --text-gold: #f1c40f;
             --discord-blue: #5865F2;
             --text-light: #f0f4f8;
@@ -53,7 +54,7 @@
         /* Navbar */
         .navbar {
             background: rgba(12, 9, 9, 0.96);
-            border-bottom: 2px solid var(--primary-orange);
+            border-bottom: 2px solid var(--accent-amber);
             padding: 1rem 2rem;
             display: flex;
             justify-content: space-between;
@@ -62,7 +63,7 @@
             top: 0;
             z-index: 1000;
             backdrop-filter: blur(10px);
-            box-shadow: 0 4px 20px rgba(255, 140, 0, 0.15);
+            box-shadow: 0 4px 20px rgba(243, 156, 18, 0.15);
         }
 
         .nav-brand {
@@ -80,7 +81,7 @@
         .nav-logo {
             height: 48px;
             width: auto;
-            filter: drop-shadow(0 0 8px rgba(255, 140, 0, 0.6));
+            filter: drop-shadow(0 0 8px rgba(243, 156, 18, 0.6));
         }
 
         .nav-links {
@@ -103,9 +104,9 @@
         }
 
         .nav-links a:hover, .nav-links a.active {
-            color: #fff;
-            background: var(--primary-orange);
-            box-shadow: 0 0 15px rgba(255, 140, 0, 0.5);
+            color: #111;
+            background: var(--accent-amber);
+            box-shadow: 0 0 15px rgba(243, 156, 18, 0.5);
         }
 
         .nav-discord-logo {
@@ -139,6 +140,7 @@
             vertical-align: middle;
         }
 
+        /* Container Principale */
         .container {
             max-width: 950px;
             margin: 2.5rem auto;
@@ -160,15 +162,52 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* Card Stile San Vitrano */
+        /* Card in stile Scheda Background */
         .card {
             background: var(--bg-card);
             border: 1px solid var(--bg-card-border);
-            border-radius: 12px;
+            border-radius: 14px;
             padding: 2rem;
             box-shadow: var(--glass-shadow);
             backdrop-filter: blur(12px);
             margin-bottom: 2rem;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 1.5rem;
+            border-bottom: 1px solid rgba(243, 156, 18, 0.2);
+            padding-bottom: 1rem;
+        }
+
+        .section-icon {
+            background: rgba(243, 156, 18, 0.15);
+            border: 1px solid var(--accent-amber);
+            color: var(--accent-amber);
+            width: 44px;
+            height: 44px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+        }
+
+        .section-title h3 {
+            font-family: var(--font-title);
+            color: var(--accent-amber);
+            font-size: 1.1rem;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+        }
+
+        .section-subtitle {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            letter-spacing: 1px;
+            text-transform: uppercase;
         }
 
         .header-container {
@@ -177,70 +216,38 @@
         }
 
         .header-logo {
-            max-height: 140px;
+            max-height: 120px;
             margin-bottom: 1rem;
-            filter: drop-shadow(0 0 15px rgba(255, 140, 0, 0.5));
+            filter: drop-shadow(0 0 15px rgba(243, 156, 18, 0.4));
         }
 
-        h1, h2, h3, h4 {
+        h1, h2, h3 {
             font-family: var(--font-title);
             text-transform: uppercase;
             letter-spacing: 1.5px;
         }
 
-        /* Sezioni Scheda Background */
-        .bg-section {
-            background: rgba(15, 10, 8, 0.75);
-            border: 1px solid var(--bg-card-border);
-            border-radius: 10px;
-            padding: 1.8rem;
-            margin-bottom: 1.8rem;
-        }
-
-        .bg-section-title {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            margin-bottom: 1.2rem;
-            border-bottom: 1px solid rgba(255, 140, 0, 0.2);
-            padding-bottom: 0.6rem;
-        }
-
-        .bg-section-icon {
-            background: rgba(255, 140, 0, 0.15);
-            border: 1px solid var(--primary-orange);
-            color: var(--primary-orange);
-            width: 36px;
-            height: 36px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 6px;
-            font-size: 1.1rem;
-        }
-
-        .bg-section-heading h3 {
-            font-size: 1.1rem;
+        .header-container h1 {
             color: #fff;
-            letter-spacing: 1px;
+            font-size: 2rem;
+            margin-bottom: 0.3rem;
         }
 
-        .bg-section-heading span {
-            font-size: 0.75rem;
+        .header-container p {
             color: var(--text-muted);
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
+            font-size: 0.9rem;
         }
 
+        /* User Info Box */
         .user-info {
             display: flex;
             align-items: center;
             justify-content: space-between;
-            background: rgba(255, 255, 255, 0.05);
+            background: rgba(255, 255, 255, 0.03);
             padding: 12px 18px;
             border-radius: 10px;
-            margin-bottom: 1.5rem;
-            border: 1px solid rgba(255, 140, 0, 0.2);
+            margin-bottom: 2rem;
+            border: 1px solid rgba(243, 156, 18, 0.2);
         }
 
         .user-info-left {
@@ -253,13 +260,14 @@
             width: 48px;
             height: 48px;
             border-radius: 50%;
-            border: 2px solid var(--primary-orange);
+            border: 2px solid var(--accent-amber);
         }
 
+        /* Form Controls */
         .form-row {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 1rem;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.2rem;
             margin-bottom: 1.2rem;
         }
 
@@ -267,13 +275,9 @@
             margin-bottom: 1.2rem;
         }
 
-        .form-group.full-width {
-            grid-column: 1 / -1;
-        }
-
         label {
             display: block;
-            margin-bottom: 0.4rem;
+            margin-bottom: 0.5rem;
             font-weight: 600;
             color: var(--text-light);
             font-size: 0.85rem;
@@ -282,7 +286,7 @@
         }
 
         label span.required {
-            color: var(--primary-orange);
+            color: var(--accent-amber);
         }
 
         input[type="text"],
@@ -291,9 +295,9 @@
         textarea {
             width: 100%;
             padding: 0.8rem 1rem;
-            background: rgba(10, 8, 8, 0.9);
-            border: 1px solid rgba(255, 140, 0, 0.25);
-            border-radius: 6px;
+            background: rgba(8, 6, 6, 0.9);
+            border: 1px solid rgba(243, 156, 18, 0.25);
+            border-radius: 8px;
             color: #fff;
             font-size: 0.95rem;
             transition: all 0.3s ease;
@@ -301,80 +305,80 @@
 
         input:focus, select:focus, textarea:focus {
             outline: none;
-            border-color: var(--primary-orange);
-            box-shadow: 0 0 10px rgba(255, 140, 0, 0.3);
-            background: rgba(10, 8, 8, 0.98);
+            border-color: var(--accent-amber);
+            box-shadow: 0 0 10px rgba(243, 156, 18, 0.3);
+            background: rgba(12, 10, 10, 0.98);
         }
 
         textarea {
             resize: vertical;
-            min-height: 110px;
+            min-height: 120px;
         }
 
         .char-counter {
             text-align: right;
             font-size: 0.75rem;
             color: var(--text-muted);
-            margin-top: 0.3rem;
+            margin-top: 4px;
         }
 
-        /* Dynamic items (Tabù / Condanne) */
-        .dynamic-item-row {
+        /* Dynamic Lists (Tabù & Precedenti) */
+        .dynamic-row {
             display: flex;
             gap: 10px;
+            margin-bottom: 10px;
             align-items: center;
-            margin-bottom: 0.8rem;
         }
 
-        .btn-remove-item {
+        .btn-remove {
             background: rgba(231, 76, 60, 0.2);
             border: 1px solid #e74c3c;
             color: #e74c3c;
-            padding: 0.7rem 1rem;
-            border-radius: 6px;
+            padding: 0.8rem 1rem;
+            border-radius: 8px;
             cursor: pointer;
-            transition: all 0.3s;
+            transition: all 0.3s ease;
         }
 
-        .btn-remove-item:hover {
+        .btn-remove:hover {
             background: #e74c3c;
             color: #fff;
         }
 
-        .btn-add-item {
-            background: rgba(255, 140, 0, 0.1);
-            border: 1px dashed var(--primary-orange);
-            color: var(--primary-orange);
-            padding: 0.7rem;
+        .btn-add {
+            background: rgba(243, 156, 18, 0.1);
+            border: 1px dashed var(--accent-amber);
+            color: var(--accent-amber);
             width: 100%;
-            border-radius: 6px;
-            font-weight: 600;
+            padding: 0.8rem;
+            border-radius: 8px;
             cursor: pointer;
+            font-weight: 600;
             text-transform: uppercase;
             font-size: 0.85rem;
-            transition: all 0.3s;
+            transition: all 0.3s ease;
             margin-top: 0.5rem;
         }
 
-        .btn-add-item:hover {
-            background: rgba(255, 140, 0, 0.2);
+        .btn-add:hover {
+            background: rgba(243, 156, 18, 0.2);
         }
 
-        /* Pulsanti */
+        /* Pulsanti principali */
         .btn {
             width: 100%;
             padding: 1rem;
-            background: var(--primary-orange);
-            color: #000;
+            background: var(--accent-amber);
+            color: #111;
             border: none;
             border-radius: 8px;
-            font-size: 1.05rem;
+            font-size: 1rem;
             font-weight: 800;
             font-family: var(--font-title);
             letter-spacing: 1px;
             cursor: pointer;
             transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(255, 140, 0, 0.3);
+            box-shadow: 0 4px 15px rgba(243, 156, 18, 0.3);
             display: inline-flex;
             justify-content: center;
             align-items: center;
@@ -384,9 +388,21 @@
         }
 
         .btn:hover {
-            background: #ffa500;
+            background: #d4ac0d;
             transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(255, 140, 0, 0.5);
+            box-shadow: 0 6px 20px rgba(243, 156, 18, 0.5);
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: #fff;
+            box-shadow: none;
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.15);
+            color: #fff;
         }
 
         .btn-discord {
@@ -416,31 +432,17 @@
             color: #fff;
         }
 
-        .btn-save-draft {
-            background: rgba(255, 255, 255, 0.08);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            color: #fff;
-            box-shadow: none;
-        }
-
-        .btn-save-draft:hover {
-            background: rgba(255, 255, 255, 0.15);
-        }
-
-        /* Badge Bozza Salvata */
         .draft-badge {
             display: inline-flex;
             align-items: center;
             gap: 6px;
-            background: rgba(255, 140, 0, 0.15);
-            border: 1px solid var(--primary-orange);
-            color: var(--primary-orange);
+            background: rgba(243, 156, 18, 0.15);
+            border: 1px solid var(--accent-amber);
+            color: var(--accent-amber);
             padding: 0.4rem 1rem;
             border-radius: 20px;
             font-size: 0.8rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
+            font-weight: 600;
         }
 
         .rules-list {
@@ -488,7 +490,7 @@
             color: var(--text-muted);
             font-size: 0.85rem;
             background: rgba(10, 8, 8, 0.98);
-            border-top: 1px solid rgba(255, 140, 0, 0.2);
+            border-top: 1px solid rgba(243, 156, 18, 0.2);
             margin-top: auto;
         }
 
@@ -502,7 +504,7 @@
                 justify-content: center;
             }
             .card {
-                padding: 1.2rem;
+                padding: 1.5rem;
             }
         }
     </style>
@@ -540,66 +542,72 @@
                 <div class="header-container">
                     <img src="logo.png" alt="Logo The Last Stand" class="header-logo">
                     <h1>The Last Stand</h1>
-                    <p style="color: var(--primary-orange); font-size: 1.2rem; font-weight: 800;">IP: TheLastStand1.aternos.me</p>
+                    <p style="color: var(--primary-red); font-size: 1.2rem; font-weight: 800;">IP: TheLastStand1.aternos.me</p>
                 </div>
                 <p style="font-size: 1.15rem; color: #cbd5e1; margin-bottom: 2rem;">
-                    Sopravvivi all'apocalisse zombie, esplora la metropoli in rovina e costruisci la tua roccaforte. Riuscirai a superare la notte?
+                    Sopravvivi all'apocalisse zombie, esplora la metropoli di Blackwood e costruisci la tua roccaforte. Riuscirai a superare la notte?
                 </p>
+                
                 <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; max-width: 600px; margin: 0 auto;">
-                    <button class="btn" style="flex: 1; min-width: 220px;" onclick="showTab('whitelist')">Compila Scheda Background</button>
-                    <button class="btn" style="flex: 1; min-width: 220px;" onclick="showTab('lore')">Leggi la Lore</button>
+                    <button class="btn" style="flex: 1; min-width: 220px;" onclick="showTab('whitelist')">Compila Scheda Whitelist</button>
+                    <button class="btn btn-secondary" style="flex: 1; min-width: 220px;" onclick="showTab('lore')">Leggi la Lore</button>
+                    <button class="btn btn-secondary" style="width: 100%; margin-top: 0.5rem;" onclick="showTab('regolamento')">Visualizza Regolamento</button>
                 </div>
             </div>
         </div>
 
-        <!-- TAB 2: LORE -->
+        <!-- TAB 2: LORE DEL SERVER -->
         <div id="lore" class="tab-content">
             <div class="card">
                 <div class="header-container">
                     <img src="logo.png" alt="Logo The Last Stand" class="header-logo">
-                    <h1>Italia 90s — San Vitrano</h1>
-                    <p>Cronache dell'Apocalisse</p>
+                    <h1>La Caduta di Blackwood</h1>
+                    <p>Cronache dell'Apocalisse — Estate 1994</p>
                 </div>
-                <p style="color: var(--text-light); line-height: 1.7;">
-                    Benvenuti a San Vitrano. Negli anni '90, un contagio inaspettato ha devastato il territorio italiano. Isolate dal resto del mondo, le comunità locali lottano ogni giorno per sopravvivere tra bande rivali, risorse scarse e orde di infetti.
-                </p>
+
+                <div style="margin-top: 1.5rem; text-align: left;">
+                    <div style="border-left: 3px solid var(--primary-red); padding-left: 1rem; margin-bottom: 2rem; background: rgba(0,0,0,0.2); padding: 1rem; border-radius: 0 8px 8px 0;">
+                        <h3 style="color: var(--primary-red); font-size: 1.2rem; margin-bottom: 0.5rem; text-transform: uppercase;">1. Il Contagio del '94</h3>
+                        <p style="color: var(--text-light); font-size: 0.95rem; line-height: 1.7;">
+                            Negli Stati Uniti del 1994, la fine del mondo è arrivata attraverso l'acqua potabile contaminata da un esperimento militare segreto insabbiato dal Governo. In poche settimane le linee telefoniche sono morte, le autostrade sono state sbarrate dall'esercito e la civiltà è collassata nell'analogico.
+                        </p>
+                    </div>
+
+                    <div style="border-left: 3px solid var(--accent-orange); padding-left: 1rem; margin-bottom: 2rem; background: rgba(0,0,0,0.2); padding: 1rem; border-radius: 0 8px 8px 0;">
+                        <h3 style="color: var(--accent-orange); font-size: 1.2rem; margin-bottom: 0.5rem; text-transform: uppercase;">2. La Zona Rossa: Blackwood</h3>
+                        <p style="color: var(--text-light); font-size: 0.95rem; line-height: 1.7;">
+                            La cittadina di Blackwood è ora una trappola mortale circondata da motel fatiscenti e cabine telefoniche fuori uso. Senza elettricità stabile, i sopravvissuti devono lottare ogni giorno contro orde di infetti e la disperazione della fame.
+                        </p>
+                    </div>
+                </div>
             </div>
         </div>
 
-        <!-- TAB 3: SCHEDA BACKGROUND / WHITELIST -->
+        <!-- TAB 3: SCHEDA BACKGROUND / WHITELIST (Stile Richiesto) -->
         <div id="whitelist" class="tab-content">
-            <div class="card" style="padding: 1.5rem;">
-                <div class="bg-section" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
-                    <div>
-                        <h2 style="font-size: 1.3rem; color: #fff; margin-bottom: 0.2rem;">Italia 90s — San Vitrano</h2>
-                        <h1 style="font-size: 1.6rem; color: var(--primary-orange);">Scheda Background</h1>
-                        <p style="color: var(--text-muted); font-size: 0.85rem;" id="welcomeUserText">Compila tutti i campi con cura. La scheda verrà valutata dallo staff.</p>
-                    </div>
-                    <div>
-                        <div id="draftIndicator" class="draft-badge" style="display: none;">
-                            💾 Bozza Locale Salvata
-                        </div>
-                    </div>
+            <div id="statusWhitelist" class="status-message"></div>
+
+            <!-- Login Discord -->
+            <div class="card discordAuthSection" style="text-align: center;">
+                <div class="header-container">
+                    <img src="logo.png" alt="Logo The Last Stand" class="header-logo">
+                    <h1>Autenticazione Richiesta</h1>
+                    <p>Accedi con Discord per compilare la Scheda Background di Blackwood</p>
                 </div>
+                <button class="btn btn-discord" style="max-width: 320px; margin: 0 auto;" onclick="loginWithDiscord('whitelist')">
+                    <svg class="discord-icon" viewBox="0 0 127.14 96.36">
+                        <path d="M107.7,8.07A105.15,105.15,0,0,0,81.47,0a72.06,72.06,0,0,0-3.36,6.83A97.68,97.68,0,0,0,49,6.83,72.37,72.37,0,0,0,45.64,0,105.89,105.89,0,0,0,19.39,8.09C2.79,32.65-1.71,56.6.54,80.21A105.73,105.73,0,0,0,32.71,96.36,77.7,77.7,0,0,0,39.6,85.25a68.42,68.42,0,0,1-10.85-5.18c.91-.66,1.8-1.34,2.66-2a75.57,75.57,0,0,0,64.32,0c.87.71,1.76,1.39,2.66,2a68.68,68.68,0,0,1-10.87,5.19,77,77,0,0,0,6.89,11.1,105.25,105.25,0,0,0,32.19-16.14c2.64-27.38-4.51-51.11-18.91-72.15ZM42.45,65.69C36.18,65.69,31,60,31,53s5-12.74,11.43-12.74S54,45.92,53.86,53,48.81,65.69,42.45,65.69Zm42.24,0C78.41,65.69,73.25,60,73.25,53s5-12.74,11.44-12.74S96.23,45.92,96.09,53,91.08,65.69,84.69,65.69Z"/>
+                    </svg>
+                    Accedi con Discord
+                </button>
+            </div>
 
-                <div id="statusWhitelist" class="status-message"></div>
-
-                <!-- Sezione Login Discord -->
-                <div class="discordAuthSection bg-section" style="text-align: center;">
-                    <p style="margin-bottom: 1.2rem; color: #a0aec0;">Effettua l'accesso con Discord per compilare e salvare la tua Scheda Background.</p>
-                    <button class="btn btn-discord" onclick="loginWithDiscord('whitelist')" style="max-width: 320px; margin: 0 auto;">
-                        <svg class="discord-icon" viewBox="0 0 127.14 96.36">
-                            <path d="M107.7,8.07A105.15,105.15,0,0,0,81.47,0a72.06,72.06,0,0,0-3.36,6.83A97.68,97.68,0,0,0,49,6.83,72.37,72.37,0,0,0,45.64,0,105.89,105.89,0,0,0,19.39,8.09C2.79,32.65-1.71,56.6.54,80.21A105.73,105.73,0,0,0,32.71,96.36,77.7,77.7,0,0,0,39.6,85.25a68.42,68.42,0,0,1-10.85-5.18c.91-.66,1.8-1.34,2.66-2a75.57,75.57,0,0,0,64.32,0c.87.71,1.76,1.39,2.66,2a68.68,68.68,0,0,1-10.87,5.19,77,77,0,0,0,6.89,11.1,105.25,105.25,0,0,0,32.19-16.14c2.64-27.38-4.51-51.11-18.91-72.15ZM42.45,65.69C36.18,65.69,31,60,31,53s5-12.74,11.43-12.74S54,45.92,53.86,53,48.81,65.69,42.45,65.69Zm42.24,0C78.41,65.69,73.25,60,73.25,53s5-12.74,11.44-12.74S96.23,45.92,96.09,53,91.08,65.69,84.69,65.69Z"/>
-                        </svg>
-                        Accedi con Discord
-                    </button>
-                </div>
-
-                <!-- FORM COMPLETO SCHEDA BACKGROUND -->
-                <form id="whitelistForm" class="auth-form" style="display: none;" onsubmit="sendWhitelist(event)">
-                    
-                    <!-- Profilo utente loggato -->
-                    <div class="user-info">
+            <!-- Form Whitelist / Scheda Background -->
+            <form id="whitelistForm" class="auth-form" style="display: none;" onsubmit="sendWhitelist(event)">
+                
+                <!-- TOP CARD PROFILO & BOZZA -->
+                <div class="card">
+                    <div class="user-info" style="margin-bottom: 1rem;">
                         <div class="user-info-left">
                             <img src="" alt="Avatar" class="userAvatar user-avatar">
                             <div>
@@ -609,297 +617,323 @@
                         </div>
                         <button type="button" class="btn btn-logout" onclick="logoutDiscord()">Logout</button>
                     </div>
-
-                    <!-- SEZIONE 1: DATI ANAGRAFICI -->
-                    <div class="bg-section">
-                        <div class="bg-section-title">
-                            <div class="bg-section-icon">🪪</div>
-                            <div class="bg-section-heading">
-                                <h3>Dati Anagrafici</h3>
-                                <span>Scheda Background — Sezione 1</span>
-                            </div>
+                    <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;">
+                        <span style="font-size: 0.85rem; color: var(--text-muted);">BLACKWOOD 1994 — SCHEDA BACKGROUND</span>
+                        <div id="draftIndicator" class="draft-badge" style="display: none;">
+                            💾 Bozza locale salvata
                         </div>
+                    </div>
+                </div>
 
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label for="wlNome">Nome <span class="required">*</span></label>
-                                <input type="text" id="wlNome" required placeholder="Nome del personaggio" oninput="saveDraft()">
-                            </div>
-                            <div class="form-group">
-                                <label for="wlCognome">Cognome <span class="required">*</span></label>
-                                <input type="text" id="wlCognome" required placeholder="Cognome del personaggio" oninput="saveDraft()">
-                            </div>
+                <!-- SEZIONE 1: DATI ANAGRAFICI -->
+                <div class="card">
+                    <div class="section-header">
+                        <div class="section-icon">🪪</div>
+                        <div class="section-title">
+                            <h3>Dati Anagrafici</h3>
+                            <div class="section-subtitle">Scheda Background — Sezione 1</div>
                         </div>
+                    </div>
 
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label>Data di Nascita <span class="required">*</span></label>
-                                <div style="display: grid; grid-template-columns: 1fr 1fr 1.2fr; gap: 8px;">
-                                    <select id="wlGiorno" required onchange="saveDraft()">
-                                        <option value="">GG</option>
-                                        <!-- Genera giorni 1-31 -->
-                                        <script>for(let i=1;i<=31;i++)document.write(`<option value="${i}">${i < 10 ? '0'+i : i}</option>`);</script>
-                                    </select>
-                                    <select id="wlMese" required onchange="saveDraft()">
-                                        <option value="">MM</option>
-                                        <script>for(let i=1;i<=12;i++)document.write(`<option value="${i}">${i < 10 ? '0'+i : i}</option>`);</script>
-                                    </select>
-                                    <select id="wlAnno" required onchange="saveDraft()">
-                                        <option value="">AAA</option>
-                                        <script>for(let i=1930;i<=1980;i++)document.write(`<option value="${i}">${i}</option>`);</script>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="wlSesso">Sesso <span class="required">*</span></label>
-                                <select id="wlSesso" required onchange="saveDraft()">
-                                    <option value="">Seleziona...</option>
-                                    <option value="Maschio">Maschio</option>
-                                    <option value="Femmina">Femmina</option>
-                                    <option value="Altro">Altro</option>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Nome <span class="required">*</span></label>
+                            <input type="text" id="wlNome" required placeholder="Nome del personaggio" oninput="saveDraft()">
+                        </div>
+                        <div class="form-group">
+                            <label>Cognome <span class="required">*</span></label>
+                            <input type="text" id="wlCognome" required placeholder="Cognome del personaggio" oninput="saveDraft()">
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Data di Nascita <span class="required">*</span></label>
+                            <div style="display: flex; gap: 8px;">
+                                <select id="wlGiorno" required onchange="saveDraft()" style="flex: 1;">
+                                    <option value="">GG</option>
+                                    <script> for(let i=1; i<=31; i++) document.write(`<option value="${i}">${i}</option>`); </script>
                                 </select>
-                            </div>
-                            <div class="form-group">
-                                <label for="wlProvenienza">Provenienza <span class="required">*</span></label>
-                                <input type="text" id="wlProvenienza" required placeholder="es. Palermo" oninput="saveDraft()">
-                            </div>
-                        </div>
-
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label for="wlPrototipo">Prototipo <span class="required">*</span></label>
-                                <select id="wlPrototipo" required onchange="saveDraft()">
-                                    <option value="">Seleziona...</option>
-                                    <option value="Criminale / Fuorilegge">Criminale / Fuorilegge</option>
-                                    <option value="Lavoratore / Civile">Lavoratore / Civile</option>
-                                    <option value="Forze dell'Ordine / Ex Militare">Forze dell'Ordine / Ex Militare</option>
-                                    <option value="Sopravvissuto / Vagabondo">Sopravvissuto / Vagabondo</option>
+                                <select id="wlMese" required onchange="saveDraft()" style="flex: 1;">
+                                    <option value="">MM</option>
+                                    <script> for(let i=1; i<=12; i++) document.write(`<option value="${i}">${i}</option>`); </script>
                                 </select>
-                            </div>
-                            <div class="form-group">
-                                <label for="wlMestiereIdeale">Mestiere Ideale <span class="required">*</span></label>
-                                <select id="wlMestiereIdeale" required onchange="saveDraft()">
-                                    <option value="">Seleziona...</option>
-                                    <option value="Meccanico / Riparatore">Meccanico / Riparatore</option>
-                                    <option value="Medico / Infermiere">Medico / Infermiere</option>
-                                    <option value="Commerciante / Trafficante">Commerciante / Trafficante</option>
-                                    <option value="Cacciatore / Guardia">Cacciatore / Guardia</option>
-                                    <option value="Altro">Altro</option>
+                                <select id="wlAnno" required onchange="saveDraft()" style="flex: 1.2;">
+                                    <option value="">AAAA</option>
+                                    <script> for(let i=1930; i<=1978; i++) document.write(`<option value="${i}">${i}</option>`); </script>
                                 </select>
                             </div>
                         </div>
-                    </div>
-
-                    <!-- SEZIONE 2: STORIA DEL PERSONAGGIO -->
-                    <div class="bg-section">
-                        <div class="bg-section-title">
-                            <div class="bg-section-icon">📜</div>
-                            <div class="bg-section-heading">
-                                <h3>Storia del Personaggio</h3>
-                                <span>Scheda Background — Sezione 2</span>
-                            </div>
+                        <div class="form-group">
+                            <label>Sesso <span class="required">*</span></label>
+                            <select id="wlSesso" required onchange="saveDraft()">
+                                <option value="">Seleziona...</option>
+                                <option value="Maschio">Maschio</option>
+                                <option value="Femmina">Femmina</option>
+                                <option value="Altro">Altro</option>
+                            </select>
                         </div>
-
-                        <div class="form-group full-width">
-                            <label for="wlStoria">Racconta la storia del tuo personaggio <span class="required">*</span></label>
-                            <textarea id="wlStoria" maxlength="5000" required placeholder="Descrivi le origini, l'infanzia, i momenti chiave che hanno formato il personaggio e cosa lo ha portato a San Vitrano..." oninput="updateCharCount('wlStoria', 'countStoria', 5000); saveDraft()"></textarea>
-                            <div class="char-counter"><span id="countStoria">0</span> / 5000</div>
-                        </div>
-
-                        <div class="form-group full-width" style="margin-top: 1.5rem;">
-                            <label for="wlMistero">Mistero Segreto <span class="required">*</span></label>
-                            <textarea id="wlMistero" maxlength="1000" required placeholder="Racconta la storia del tuo personaggio (segreti, eventi celati)..." oninput="updateCharCount('wlMistero', 'countMistero', 1000); saveDraft()"></textarea>
-                            <div class="char-counter"><span id="countMistero">0</span> / 1000</div>
-                        </div>
-
-                        <div class="form-row" style="margin-top: 1.5rem;">
-                            <div class="form-group">
-                                <label for="wlVizi">Vizi</label>
-                                <textarea id="wlVizi" maxlength="400" placeholder="Descrivi i vizi del personaggio..." oninput="updateCharCount('wlVizi', 'countVizi', 400); saveDraft()"></textarea>
-                                <div class="char-counter"><span id="countVizi">0</span> / 400</div>
-                            </div>
-                            <div class="form-group">
-                                <label for="wlQualita">Qualità</label>
-                                <textarea id="wlQualita" maxlength="400" placeholder="Descrivi le qualità principali..." oninput="updateCharCount('wlQualita', 'countQualita', 400); saveDraft()"></textarea>
-                                <div class="char-counter"><span id="countQualita">0</span> / 400</div>
-                            </div>
-                            <div class="form-group">
-                                <label for="wlDifetti">Difetti</label>
-                                <textarea id="wlDifetti" maxlength="400" placeholder="Descrivi i difetti del personaggio..." oninput="updateCharCount('wlDifetti', 'countDifetti', 400); saveDraft()"></textarea>
-                                <div class="char-counter"><span id="countDifetti">0</span> / 400</div>
-                            </div>
+                        <div class="form-group">
+                            <label>Provenienza <span class="required">*</span></label>
+                            <input type="text" id="wlProvenienza" required placeholder="es. Boston, Chicago..." oninput="saveDraft()">
                         </div>
                     </div>
 
-                    <!-- SEZIONE 3: TABÙ DEL PERSONAGGIO -->
-                    <div class="bg-section">
-                        <div class="bg-section-title">
-                            <div class="bg-section-icon">✋</div>
-                            <div class="bg-section-heading">
-                                <h3>Tabù del Personaggio</h3>
-                                <span>Scheda Background — Sezione 3</span>
-                            </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Profilo / Archetipo <span class="required">*</span></label>
+                            <select id="wlPrototipo" required onchange="saveDraft()">
+                                <option value="">Seleziona...</option>
+                                <option value="Sopravvissuto della Resistenza">Sopravvissuto della Resistenza</option>
+                                <option value="Vagabondo / Nomade">Vagabondo / Nomade</option>
+                                <option value="Ex Federale / Forze dell'Ordine">Ex Federale / Forze dell'Ordine</option>
+                                <option value="Civile / Sciacallo">Civile / Sciacallo</option>
+                            </select>
                         </div>
-                        <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1rem;">
-                            Elenca i limiti morali o comportamentali che il personaggio non supererà mai, a prescindere dalle circostanze. <b>Almeno due obbligatori.</b>
-                        </p>
-                        
-                        <div id="tabuContainer">
-                            <div class="dynamic-item-row">
-                                <input type="text" class="tabu-input" required placeholder="es. Non accetta ordini da chi non rispetta i più deboli" oninput="saveDraft()">
-                            </div>
-                            <div class="dynamic-item-row">
-                                <input type="text" class="tabu-input" required placeholder="es. Rifiuta di rubare ai bambini o agli anziani" oninput="saveDraft()">
-                            </div>
+                        <div class="form-group">
+                            <label>Mestiere Ideale <span class="required">*</span></label>
+                            <select id="wlMestiere" required onchange="saveDraft()">
+                                <option value="">Seleziona...</option>
+                                <option value="Meccanico / Riparatore">Meccanico / Riparatore</option>
+                                <option value="Medico / Infermiere di campo">Medico / Infermiere di campo</option>
+                                <option value="Cacciatore / Scout">Cacciatore / Scout</option>
+                                <option value="Costruttore / Muratore">Costruttore / Muratore</option>
+                            </select>
                         </div>
-                        <button type="button" class="btn-add-item" onclick="addTabuField()">+ Aggiungi Tabù</button>
                     </div>
+                </div>
 
-                    <!-- SEZIONE 4: PRECEDENTI PENALI -->
-                    <div class="bg-section">
-                        <div class="bg-section-title">
-                            <div class="bg-section-icon">🔨</div>
-                            <div class="bg-section-heading">
-                                <h3>Precedenti Penali</h3>
-                                <span>Scheda Background — Sezione 4</span>
-                            </div>
-                        </div>
-                        <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1rem;">
-                            Elenca eventuali precedenti penali antecedenti all'arrivo a San Vitrano. Lascia vuoto se non applicabile.
-                        </p>
-
-                        <div id="penaliContainer">
-                            <div class="dynamic-item-row penale-row">
-                                <input type="text" placeholder="Reato (es. Furto aggravato)" oninput="saveDraft()" style="flex: 2;">
-                                <input type="text" placeholder="Anno (es. 1988)" oninput="saveDraft()" style="flex: 1;">
-                                <input type="text" placeholder="Pena (es. 2 anni)" oninput="saveDraft()" style="flex: 1;">
-                                <button type="button" class="btn-remove-item" onclick="this.parentElement.remove(); saveDraft()">✕</button>
-                            </div>
-                        </div>
-                        <button type="button" class="btn-add-item" onclick="addPenaleField()">+ Aggiungi Condanna</button>
-                    </div>
-
-                    <!-- SEZIONE 5: SCOPI DEL PERSONAGGIO -->
-                    <div class="bg-section">
-                        <div class="bg-section-title">
-                            <div class="bg-section-icon">🎯</div>
-                            <div class="bg-section-heading">
-                                <h3>Scopi del Personaggio</h3>
-                                <span>Scheda Background — Sezione 5</span>
-                            </div>
-                        </div>
-
-                        <div class="form-group full-width">
-                            <label for="wlScopi">Cosa vuole il tuo personaggio a San Vitrano? <span class="required">*</span></label>
-                            <textarea id="wlScopi" maxlength="600" required placeholder="Fai comprendere chiaramente le intenzioni del personaggio: lavoro, ambizioni sociali, relazioni..." oninput="updateCharCount('wlScopi', 'countScopi', 600); saveDraft()"></textarea>
-                            <div class="char-counter"><span id="countScopi">0</span> / 600</div>
+                <!-- SEZIONE 2: STORIA E CARATTERISTICHE -->
+                <div class="card">
+                    <div class="section-header">
+                        <div class="section-icon">📜</div>
+                        <div class="section-title">
+                            <h3>Storia del Personaggio</h3>
+                            <div class="section-subtitle">Scheda Background — Sezione 2</div>
                         </div>
                     </div>
 
-                    <!-- SEZIONE 6: META DEL PERSONAGGIO -->
-                    <div class="bg-section">
-                        <div class="bg-section-title">
-                            <div class="bg-section-icon">🏁</div>
-                            <div class="bg-section-heading">
-                                <h3>Meta del Personaggio</h3>
-                                <span>Scheda Background — Sezione 6</span>
-                            </div>
-                        </div>
-
-                        <div class="form-group full-width">
-                            <label for="wlMeta">Cosa vuole ottenere nel lungo periodo? <span class="required">*</span></label>
-                            <textarea id="wlMeta" maxlength="800" required placeholder="Descrivi la meta del personaggio: cosa lo tiene in vita, cosa lo spinge ogni giorno e cosa si prospetta a lungo termine..." oninput="updateCharCount('wlMeta', 'countMeta', 800); saveDraft()"></textarea>
-                            <div class="char-counter"><span id="countMeta">0</span> / 800</div>
-                        </div>
+                    <div class="form-group">
+                        <label>Racconta la storia del tuo personaggio <span class="required">*</span></label>
+                        <textarea id="wlStoria" required placeholder="Descrivi le origini, il vissuto prima dell'epidemia e cosa lo ha portato a Blackwood..." oninput="updateCounter('wlStoria', 'countStoria', 5000); saveDraft()"></textarea>
+                        <div class="char-counter"><span id="countStoria">0</span> / 5000</div>
                     </div>
 
-                    <!-- BOTTONI FINALI -->
-                    <div style="display: flex; gap: 1rem; margin-top: 2rem;">
-                        <button type="button" class="btn btn-save-draft" onclick="saveDraft(true)">Salva Bozza</button>
-                        <button type="submit" id="submitWlBtn" class="btn" style="flex: 2;">Invia Scheda</button>
+                    <div class="form-group">
+                        <label>Mistero Segreto <span class="required">*</span></label>
+                        <textarea id="wlMistero" required placeholder="Un segreto o un dettaglio nascosto che solo il tuo personaggio conosce..." oninput="updateCounter('wlMistero', 'countMistero', 1000); saveDraft()"></textarea>
+                        <div class="char-counter"><span id="countMistero">0</span> / 1000</div>
                     </div>
 
-                </form>
-            </div>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1rem; margin-top: 1rem;">
+                        <div class="form-group">
+                            <label>Vizi</label>
+                            <textarea id="wlVizi" placeholder="Descrivi i vizi del personaggio..." oninput="updateCounter('wlVizi', 'countVizi', 400); saveDraft()"></textarea>
+                            <div class="char-counter"><span id="countVizi">0</span> / 400</div>
+                        </div>
+                        <div class="form-group">
+                            <label>Qualità</label>
+                            <textarea id="wlQualita" placeholder="Descrivi le qualità principali..." oninput="updateCounter('wlQualita', 'countQualita', 400); saveDraft()"></textarea>
+                            <div class="char-counter"><span id="countQualita">0</span> / 400</div>
+                        </div>
+                        <div class="form-group">
+                            <label>Difetti</label>
+                            <textarea id="wlDifetti" placeholder="Descrivi i difetti del personaggio..." oninput="updateCounter('wlDifetti', 'countDifetti', 400); saveDraft()"></textarea>
+                            <div class="char-counter"><span id="countDifetti">0</span> / 400</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SEZIONE 3: TABÙ DEL PERSONAGGIO -->
+                <div class="card">
+                    <div class="section-header">
+                        <div class="section-icon">✋</div>
+                        <div class="section-title">
+                            <h3>Tabù del Personaggio</h3>
+                            <div class="section-subtitle">Scheda Background — Sezione 3</div>
+                        </div>
+                    </div>
+                    <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1rem;">
+                        Elenca i limiti morali o comportamentali che il personaggio non supererà mai, a prescindere dalle circostanze. <b>Almeno due obbligatori.</b>
+                    </p>
+                    <div id="tabuContainer">
+                        <div class="dynamic-row">
+                            <input type="text" class="tabu-input" required placeholder="es. Non accetta ordini da chi non rispetta i più deboli" oninput="saveDraft()">
+                        </div>
+                        <div class="dynamic-row">
+                            <input type="text" class="tabu-input" required placeholder="es. Rifiuta di rubare a bambini o feriti gravi" oninput="saveDraft()">
+                        </div>
+                    </div>
+                    <button type="button" class="btn-add" onclick="addTabuField()">+ Aggiungi Tabù</button>
+                </div>
+
+                <!-- SEZIONE 4: PRECEDENTI PENALI -->
+                <div class="card">
+                    <div class="section-header">
+                        <div class="section-icon">⚖️</div>
+                        <div class="section-title">
+                            <h3>Precedenti Penali</h3>
+                            <div class="section-subtitle">Scheda Background — Sezione 4</div>
+                        </div>
+                    </div>
+                    <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1rem;">
+                        Elenca eventuali precedenti penali antecedenti all'arrivo a Blackwood. Lascia vuoto se non applicabile.
+                    </p>
+                    <div id="penaliContainer">
+                        <div class="dynamic-row">
+                            <input type="text" class="penale-reato" placeholder="Reato (es. Furto aggravato)" style="flex: 2;" oninput="saveDraft()">
+                            <input type="text" class="penale-anno" placeholder="Anno (es. 1991)" style="flex: 1;" oninput="saveDraft()">
+                            <input type="text" class="penale-pena" placeholder="Pena (es. 6 mesi)" style="flex: 1;" oninput="saveDraft()">
+                        </div>
+                    </div>
+                    <button type="button" class="btn-add" onclick="addPenaleField()">+ Aggiungi Condanna</button>
+                </div>
+
+                <!-- SEZIONE 5: SCOPI DEL PERSONAGGIO -->
+                <div class="card">
+                    <div class="section-header">
+                        <div class="section-icon">🎯</div>
+                        <div class="section-title">
+                            <h3>Scopi del Personaggio</h3>
+                            <div class="section-subtitle">Scheda Background — Sezione 5</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Cosa vuole il tuo personaggio a Blackwood? <span class="required">*</span></label>
+                        <textarea id="wlScopi" required placeholder="Fai comprendere chiaramente le intenzioni del personaggio: lavoro, ambizioni sociali, relazioni..." oninput="updateCounter('wlScopi', 'countScopi', 600); saveDraft()"></textarea>
+                        <div class="char-counter"><span id="countScopi">0</span> / 600</div>
+                    </div>
+                </div>
+
+                <!-- SEZIONE 6: META DEL PERSONAGGIO -->
+                <div class="card">
+                    <div class="section-header">
+                        <div class="section-icon">🏁</div>
+                        <div class="section-title">
+                            <h3>Meta del Personaggio</h3>
+                            <div class="section-subtitle">Scheda Background — Sezione 6</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Cosa vuole ottenere nel lungo periodo? <span class="required">*</span></label>
+                        <textarea id="wlMeta" required placeholder="Descrivi la meta del personaggio: cosa lo tiene in vita, cosa lo spinge ogni giorno e cosa si prospetta a lungo termine..." oninput="updateCounter('wlMeta', 'countMeta', 800); saveDraft()"></textarea>
+                        <div class="char-counter"><span id="countMeta">0</span> / 800</div>
+                    </div>
+                </div>
+
+                <!-- PULSANTI FINALI -->
+                <div class="card" style="display: flex; gap: 1rem; justify-content: flex-end;">
+                    <button type="button" class="btn btn-secondary" onclick="saveDraft()" style="width: auto; padding: 0.8rem 1.5rem;">💾 Salva Bozza</button>
+                    <button type="submit" id="submitWlBtn" class="btn" style="width: auto; padding: 0.8rem 2rem;">Invia Scheda Whitelist</button>
+                </div>
+
+            </form>
         </div>
 
         <!-- TAB 4: CANDIDATURA STAFF -->
         <div id="candidatura" class="tab-content">
-            <div class="card">
+            <div id="statusMessage" class="status-message"></div>
+
+            <div class="card discordAuthSection" style="text-align: center;">
                 <div class="header-container">
                     <img src="logo.png" alt="Logo The Last Stand" class="header-logo">
                     <h1>Candidatura Staff</h1>
-                    <p>Unisciti al Team</p>
+                    <p>Accedi con Discord per inviare la candidatura</p>
                 </div>
+                <button class="btn btn-discord" style="max-width: 320px; margin: 0 auto;" onclick="loginWithDiscord('candidatura')">
+                    <svg class="discord-icon" viewBox="0 0 127.14 96.36">
+                        <path d="M107.7,8.07A105.15,105.15,0,0,0,81.47,0a72.06,72.06,0,0,0-3.36,6.83A97.68,97.68,0,0,0,49,6.83,72.37,72.37,0,0,0,45.64,0,105.89,105.89,0,0,0,19.39,8.09C2.79,32.65-1.71,56.6.54,80.21A105.73,105.73,0,0,0,32.71,96.36,77.7,77.7,0,0,0,39.6,85.25a68.42,68.42,0,0,1-10.85-5.18c.91-.66,1.8-1.34,2.66-2a75.57,75.57,0,0,0,64.32,0c.87.71,1.76,1.39,2.66,2a68.68,68.68,0,0,1-10.87,5.19,77,77,0,0,0,6.89,11.1,105.25,105.25,0,0,0,32.19-16.14c2.64-27.38-4.51-51.11-18.91-72.15ZM42.45,65.69C36.18,65.69,31,60,31,53s5-12.74,11.43-12.74S54,45.92,53.86,53,48.81,65.69,42.45,65.69Zm42.24,0C78.41,65.69,73.25,60,73.25,53s5-12.74,11.44-12.74S96.23,45.92,96.09,53,91.08,65.69,84.69,65.69Z"/>
+                    </svg>
+                    Accedi con Discord
+                </button>
+            </div>
 
-                <div id="statusMessage" class="status-message"></div>
-
-                <div class="discordAuthSection" style="text-align: center;">
-                    <p style="margin-bottom: 1.5rem; color: #a0aec0;">Effettua il login con Discord per inviare la candidatura.</p>
-                    <button class="btn btn-discord" onclick="loginWithDiscord('candidatura')" style="max-width: 320px; margin: 0 auto;">
-                        <svg class="discord-icon" viewBox="0 0 127.14 96.36">
-                            <path d="M107.7,8.07A105.15,105.15,0,0,0,81.47,0a72.06,72.06,0,0,0-3.36,6.83A97.68,97.68,0,0,0,49,6.83,72.37,72.37,0,0,0,45.64,0,105.89,105.89,0,0,0,19.39,8.09C2.79,32.65-1.71,56.6.54,80.21A105.73,105.73,0,0,0,32.71,96.36,77.7,77.7,0,0,0,39.6,85.25a68.42,68.42,0,0,1-10.85-5.18c.91-.66,1.8-1.34,2.66-2a75.57,75.57,0,0,0,64.32,0c.87.71,1.76,1.39,2.66,2a68.68,68.68,0,0,1-10.87,5.19,77,77,0,0,0,6.89,11.1,105.25,105.25,0,0,0,32.19-16.14c2.64-27.38-4.51-51.11-18.91-72.15ZM42.45,65.69C36.18,65.69,31,60,31,53s5-12.74,11.43-12.74S54,45.92,53.86,53,48.81,65.69,42.45,65.69Zm42.24,0C78.41,65.69,73.25,60,73.25,53s5-12.74,11.44-12.74S96.23,45.92,96.09,53,91.08,65.69,84.69,65.69Z"/>
-                        </svg>
-                        Accedi con Discord
-                    </button>
-                </div>
-
-                <form id="applicationForm" class="auth-form" style="display: none;" onsubmit="sendApplication(event)">
-                    <div class="user-info">
-                        <div class="user-info-left">
-                            <img src="" alt="Avatar" class="userAvatar user-avatar">
-                            <div>
-                                <div class="userName" style="font-weight: 700; color: #fff;"></div>
-                                <div class="userId" style="font-size: 0.8rem; color: var(--text-muted);"></div>
-                            </div>
+            <form id="applicationForm" class="auth-form card" style="display: none;" onsubmit="sendApplication(event)">
+                <div class="user-info">
+                    <div class="user-info-left">
+                        <img src="" alt="Avatar" class="userAvatar user-avatar">
+                        <div>
+                            <div class="userName" style="font-weight: 700; color: #fff;"></div>
+                            <div class="userId" style="font-size: 0.8rem; color: var(--text-muted);"></div>
                         </div>
-                        <button type="button" class="btn btn-logout" onclick="logoutDiscord()">Logout</button>
                     </div>
+                    <button type="button" class="btn btn-logout" onclick="logoutDiscord()">Logout</button>
+                </div>
 
-                    <div class="form-group">
-                        <label for="mcUsername">Nickname Minecraft (IGN):</label>
-                        <input type="text" id="mcUsername" required placeholder="Es. Player123">
-                    </div>
-                    <div class="form-group">
-                        <label for="etaOOC">Età Reale:</label>
-                        <input type="number" id="etaOOC" min="12" max="99" required placeholder="Es. 16">
-                    </div>
-                    <div class="form-group">
-                        <label for="ruolo">Ruolo:</label>
-                        <select id="ruolo" required>
-                            <option value="">Seleziona...</option>
-                            <option value="Helper">Helper</option>
-                            <option value="Builder">Builder</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="motivazione">Motivazione:</label>
-                        <textarea id="motivazione" required placeholder="Perché vuoi entrare nello staff?"></textarea>
-                    </div>
-                    <button type="submit" id="submitBtn" class="btn">Invia Candidatura</button>
-                </form>
-            </div>
+                <div class="form-group">
+                    <label>Nickname Minecraft (IGN):</label>
+                    <input type="text" id="mcUsername" required placeholder="Es. Player123">
+                </div>
+
+                <div class="form-group">
+                    <label>Età Reale:</label>
+                    <input type="number" id="etaOOC" min="12" max="99" required placeholder="Es. 16">
+                </div>
+
+                <div class="form-group">
+                    <label>Ruolo per cui ti candidi:</label>
+                    <select id="ruolo" required>
+                        <option value="">Seleziona un ruolo...</option>
+                        <option value="Helper">Helper / Moderatore</option>
+                        <option value="Builder">Builder / Costruttore</option>
+                        <option value="Developer">Developer / Plugins</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Esperienze Passate:</label>
+                    <textarea id="esperienze" required placeholder="Elenca eventuali esperienze pregresse nello staff..."></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label>Perché vuoi far parte di The Last Stand?</label>
+                    <textarea id="motivazione" required placeholder="Spiega quali idee e contributo intendi portare nel server..."></textarea>
+                </div>
+
+                <button type="submit" id="submitBtn" class="btn">Invia Candidatura Staff</button>
+            </form>
         </div>
 
-        <!-- TAB 5: MAPPA -->
+        <!-- TAB 5: MAPPA INTERATTIVA -->
         <div id="mappa" class="tab-content">
-            <div class="card" style="text-align: center; padding: 3rem;">
-                <h2 style="color: var(--primary-orange);">Rete Satellitare Offline</h2>
-                <p style="color: var(--text-muted); margin-top: 1rem;">Nessuna mappa disponibile al momento.</p>
+            <div class="card">
+                <div class="header-container">
+                    <img src="logo.png" alt="Logo The Last Stand" class="header-logo">
+                    <h1>Mappa Globale</h1>
+                    <p>Stato Rete Satellitare</p>
+                </div>
+                
+                <div style="background: rgba(13, 9, 9, 0.9); border: 2px solid var(--accent-amber); border-radius: 12px; padding: 3.5rem 1.5rem; text-align: center; margin-top: 1rem;">
+                    <div style="font-size: 3rem; margin-bottom: 0.5rem;">📡❌</div>
+                    <h2 style="color: var(--accent-amber); font-size: 1.8rem; margin-bottom: 0.8rem; text-transform: uppercase;">Rete Satellitare Offline</h2>
+                    <p style="color: #cbd5e1; font-size: 1rem; max-width: 550px; margin: 0 auto; line-height: 1.6; font-family: monospace;">
+                        [ SEGNALE INTERROTTO ]<br>
+                        I sistemi di rilevamento topografico di Blackwood non sono operativi.<br><br>
+                        <span style="color: var(--accent-orange);">Nessuna mappa disponibile. Esplora la città a tuo rischio e pericolo.</span>
+                    </p>
+                </div>
             </div>
         </div>
 
-        <!-- TAB 6: REGOLAMENTO -->
+        <!-- TAB 6: REGOLAMENTO DETTAGLIATO -->
         <div id="regolamento" class="tab-content">
             <div class="card">
                 <div class="header-container">
-                    <img src="logo.png" alt="Logo" class="header-logo">
-                    <h1>Regolamento</h1>
+                    <img src="logo.png" alt="Logo The Last Stand" class="header-logo">
+                    <h1>Regolamento Ufficiale</h1>
+                    <p>Norme e Direttive di Sopravvivenza</p>
                 </div>
+                
+                <h3 style="color: var(--accent-amber); margin-bottom: 0.8rem;">1. Comportamento Generale</h3>
+                <ul class="rules-list" style="margin-bottom: 1.8rem;">
+                    <li>Rispetto reciproco obbligatorio tra giocatori e verso i membri dello Staff.</li>
+                    <li>L'uso di cheat, hack, X-Ray o bug exploit comporterà il **BAN PERMANENTE** senza preavviso.</li>
+                </ul>
+
+                <h3 style="color: var(--accent-amber); margin-bottom: 0.8rem;">2. Roleplay e Sopravvivenza</h3>
                 <ul class="rules-list">
-                    <li>Rispetto reciproco obbligatorio.</li>
-                    <li>Vietato l'uso di hack o cheat di qualsiasi tipo.</li>
-                    <li>Seguire rigorosamente il contesto Roleplay.</li>
+                    <li>Mantenere sempre il personaggio coerente con l'ambientazione di Blackwood 1994.</li>
+                    <li>Il combattimento tra giocatori è regolato dalle dinamiche di fazione e sopravvivenza.</li>
                 </ul>
             </div>
         </div>
@@ -913,6 +947,7 @@
     <script>
         const CLIENT_ID = '1537954693987438602'; 
         const REDIRECT_URI = window.location.origin + window.location.pathname;
+
         const WEBHOOK_WHITELIST = 'https://discord.com/api/webhooks/1537962063899394130/J3ruV7rhz6N914Q79lYs9Jr8R13nqf5kwvs3tET_Pt0bRbMHyjEwwlaS2Rqn-1FTQZI4';
         const WEBHOOK_STAFF = 'https://discord.com/api/webhooks/1537962063899394130/J3ruV7rhz6N914Q79lYs9Jr8R13nqf5kwvs3tET_Pt0bRbMHyjEwwlaS2Rqn-1FTQZI4';
 
@@ -929,7 +964,8 @@
 
         function loginWithDiscord(targetTab) {
             const scope = 'identify';
-            const authUrl = `https://discord.com/api/oauth2/authorize?client_id=${CLIENT_ID}&redirect_uri=${encodeURIComponent(REDIRECT_URI)}&response_type=token&scope=${scope}&state=${targetTab}`;
+            const state = targetTab || 'home';
+            const authUrl = `https://discord.com/api/oauth2/authorize?client_id=${CLIENT_ID}&redirect_uri=${encodeURIComponent(REDIRECT_URI)}&response_type=token&scope=${scope}&state=${state}`;
             window.location.href = authUrl;
         }
 
@@ -940,128 +976,144 @@
             document.querySelectorAll('.auth-form').forEach(el => el.style.display = 'none');
         }
 
-        function updateCharCount(inputId, counterId, maxLength) {
-            const val = document.getElementById(inputId).value;
+        function updateCounter(textareaId, counterId, max) {
+            const val = document.getElementById(textareaId).value;
             const countEl = document.getElementById(counterId);
-            if(countEl) {
-                countEl.innerText = val.length;
-            }
+            if(countEl) countEl.innerText = val.length;
         }
 
         function addTabuField() {
             const container = document.getElementById('tabuContainer');
-            const row = document.createElement('div');
-            row.className = 'dynamic-item-row';
-            row.innerHTML = `
-                <input type="text" class="tabu-input" required placeholder="Inserisci un tabù del personaggio..." oninput="saveDraft()">
-                <button type="button" class="btn-remove-item" onclick="this.parentElement.remove(); saveDraft()">✕</button>
+            const div = document.createElement('div');
+            div.className = 'dynamic-row';
+            div.innerHTML = `
+                <input type="text" class="tabu-input" required placeholder="Nuovo tabù del personaggio..." oninput="saveDraft()">
+                <button type="button" class="btn-remove" onclick="this.parentElement.remove(); saveDraft();">✕</button>
             `;
-            container.appendChild(row);
+            container.appendChild(div);
         }
 
         function addPenaleField() {
             const container = document.getElementById('penaliContainer');
-            const row = document.createElement('div');
-            row.className = 'dynamic-item-row penale-row';
-            row.innerHTML = `
-                <input type="text" placeholder="Reato" oninput="saveDraft()" style="flex: 2;">
-                <input type="text" placeholder="Anno" oninput="saveDraft()" style="flex: 1;">
-                <input type="text" placeholder="Pena" oninput="saveDraft()" style="flex: 1;">
-                <button type="button" class="btn-remove-item" onclick="this.parentElement.remove(); saveDraft()">✕</button>
+            const div = document.createElement('div');
+            div.className = 'dynamic-row';
+            div.innerHTML = `
+                <input type="text" class="penale-reato" placeholder="Reato" style="flex: 2;" oninput="saveDraft()">
+                <input type="text" class="penale-anno" placeholder="Anno" style="flex: 1;" oninput="saveDraft()">
+                <input type="text" class="penale-pena" placeholder="Pena" style="flex: 1;" oninput="saveDraft()">
+                <button type="button" class="btn-remove" onclick="this.parentElement.remove(); saveDraft();">✕</button>
             `;
-            container.appendChild(row);
+            container.appendChild(div);
         }
 
         // SALVATAGGIO BOZZA LOCALE
-        function saveDraft(notify = false) {
+        function saveDraft() {
             const tabus = Array.from(document.querySelectorAll('.tabu-input')).map(input => input.value);
-            
-            const penali = Array.from(document.querySelectorAll('.penale-row')).map(row => {
-                const inputs = row.querySelectorAll('input');
-                return { reato: inputs[0].value, anno: inputs[1].value, pena: inputs[2].value };
-            });
+            const penali = Array.from(document.querySelectorAll('#penaliContainer .dynamic-row')).map(row => ({
+                reato: row.querySelector('.penale-reato').value,
+                anno: row.querySelector('.penale-anno').value,
+                pena: row.querySelector('.penale-pena').value
+            }));
 
             const draftData = {
                 nome: document.getElementById('wlNome').value,
                 cognome: document.getElementById('wlCognome').value,
                 giorno: document.getElementById('wlGiorno').value,
                 mese: document.getElementById('wlMese').value,
-                anno: document.getElementById('wlAnno').value,
+                annoNascita: document.getElementById('wlAnno').value,
                 sesso: document.getElementById('wlSesso').value,
                 provenienza: document.getElementById('wlProvenienza').value,
                 prototipo: document.getElementById('wlPrototipo').value,
-                mestiere: document.getElementById('wlMestiereIdeale').value,
+                mestiere: document.getElementById('wlMestiere').value,
                 storia: document.getElementById('wlStoria').value,
                 mistero: document.getElementById('wlMistero').value,
                 vizi: document.getElementById('wlVizi').value,
                 qualita: document.getElementById('wlQualita').value,
                 difetti: document.getElementById('wlDifetti').value,
-                tabus: tabus,
-                penali: penali,
                 scopi: document.getElementById('wlScopi').value,
-                meta: document.getElementById('wlMeta').value
+                meta: document.getElementById('wlMeta').value,
+                tabus: tabus,
+                penali: penali
             };
 
-            localStorage.setItem('whitelist_draft', JSON.stringify(draftData));
+            localStorage.setItem('blacklist_whitelist_draft', JSON.stringify(draftData));
             
             const badge = document.getElementById('draftIndicator');
             if (badge) badge.style.display = 'inline-flex';
-
-            if(notify) {
-                alert('Bozza salvata con successo nel browser!');
-            }
         }
 
         function loadDraft() {
-            const savedDraft = localStorage.getItem('whitelist_draft');
+            const savedDraft = localStorage.getItem('blacklist_whitelist_draft');
             if (savedDraft) {
-                const d = JSON.parse(savedDraft);
-                if(d.nome) document.getElementById('wlNome').value = d.nome;
-                if(d.cognome) document.getElementById('wlCognome').value = d.cognome;
-                if(d.giorno) document.getElementById('wlGiorno').value = d.giorno;
-                if(d.mese) document.getElementById('wlMese').value = d.mese;
-                if(d.anno) document.getElementById('wlAnno').value = d.anno;
-                if(d.sesso) document.getElementById('wlSesso').value = d.sesso;
-                if(d.provenienza) document.getElementById('wlProvenienza').value = d.provenienza;
-                if(d.prototipo) document.getElementById('wlPrototipo').value = d.prototipo;
-                if(d.mestiere) document.getElementById('wlMestiereIdeale').value = d.mestiere;
-                if(d.storia) { document.getElementById('wlStoria').value = d.storia; updateCharCount('wlStoria', 'countStoria', 5000); }
-                if(d.mistero) { document.getElementById('wlMistero').value = d.mistero; updateCharCount('wlMistero', 'countMistero', 1000); }
-                if(d.vizi) { document.getElementById('wlVizi').value = d.vizi; updateCharCount('wlVizi', 'countVizi', 400); }
-                if(d.qualita) { document.getElementById('wlQualita').value = d.qualita; updateCharCount('wlQualita', 'countQualita', 400); }
-                if(d.difetti) { document.getElementById('wlDifetti').value = d.difetti; updateCharCount('wlDifetti', 'countDifetti', 400); }
-                if(d.scopi) { document.getElementById('wlScopi').value = d.scopi; updateCharCount('wlScopi', 'countScopi', 600); }
-                if(d.meta) { document.getElementById('wlMeta').value = d.meta; updateCharCount('wlMeta', 'countMeta', 800); }
+                const data = JSON.parse(savedDraft);
+                if(document.getElementById('wlNome')) document.getElementById('wlNome').value = data.nome || '';
+                if(document.getElementById('wlCognome')) document.getElementById('wlCognome').value = data.cognome || '';
+                if(document.getElementById('wlGiorno')) document.getElementById('wlGiorno').value = data.giorno || '';
+                if(document.getElementById('wlMese')) document.getElementById('wlMese').value = data.mese || '';
+                if(document.getElementById('wlAnno')) document.getElementById('wlAnno').value = data.annoNascita || '';
+                if(document.getElementById('wlSesso')) document.getElementById('wlSesso').value = data.sesso || '';
+                if(document.getElementById('wlProvenienza')) document.getElementById('wlProvenienza').value = data.provenienza || '';
+                if(document.getElementById('wlPrototipo')) document.getElementById('wlPrototipo').value = data.prototipo || '';
+                if(document.getElementById('wlMestiere')) document.getElementById('wlMestiere').value = data.mestiere || '';
+                
+                if(document.getElementById('wlStoria')) {
+                    document.getElementById('wlStoria').value = data.storia || '';
+                    updateCounter('wlStoria', 'countStoria', 5000);
+                }
+                if(document.getElementById('wlMistero')) {
+                    document.getElementById('wlMistero').value = data.mistero || '';
+                    updateCounter('wlMistero', 'countMistero', 1000);
+                }
+                if(document.getElementById('wlVizi')) {
+                    document.getElementById('wlVizi').value = data.vizi || '';
+                    updateCounter('wlVizi', 'countVizi', 400);
+                }
+                if(document.getElementById('wlQualita')) {
+                    document.getElementById('wlQualita').value = data.qualita || '';
+                    updateCounter('wlQualita', 'countQualita', 400);
+                }
+                if(document.getElementById('wlDifetti')) {
+                    document.getElementById('wlDifetti').value = data.difetti || '';
+                    updateCounter('wlDifetti', 'countDifetti', 400);
+                }
+                if(document.getElementById('wlScopi')) {
+                    document.getElementById('wlScopi').value = data.scopi || '';
+                    updateCounter('wlScopi', 'countScopi', 600);
+                }
+                if(document.getElementById('wlMeta')) {
+                    document.getElementById('wlMeta').value = data.meta || '';
+                    updateCounter('wlMeta', 'countMeta', 800);
+                }
 
-                // Carica tabù dinamici
-                if(d.tabus && d.tabus.length > 0) {
+                // Ripristino tabù dinamici
+                if (data.tabus && data.tabus.length > 0) {
                     const container = document.getElementById('tabuContainer');
                     container.innerHTML = '';
-                    d.tabus.forEach((t, index) => {
-                        const row = document.createElement('div');
-                        row.className = 'dynamic-item-row';
-                        row.innerHTML = `
+                    data.tabus.forEach((t, index) => {
+                        const div = document.createElement('div');
+                        div.className = 'dynamic-row';
+                        div.innerHTML = `
                             <input type="text" class="tabu-input" required value="${t}" oninput="saveDraft()">
-                            ${index >= 2 ? '<button type="button" class="btn-remove-item" onclick="this.parentElement.remove(); saveDraft()">✕</button>' : ''}
+                            ${index >= 2 ? '<button type="button" class="btn-remove" onclick="this.parentElement.remove(); saveDraft();">✕</button>' : ''}
                         `;
-                        container.appendChild(row);
+                        container.appendChild(div);
                     });
                 }
 
-                // Carica precedenti penali
-                if(d.penali && d.penali.length > 0) {
-                    const pContainer = document.getElementById('penaliContainer');
-                    pContainer.innerHTML = '';
-                    d.penali.forEach(p => {
-                        const row = document.createElement('div');
-                        row.className = 'dynamic-item-row penale-row';
-                        row.innerHTML = `
-                            <input type="text" placeholder="Reato" value="${p.reato}" oninput="saveDraft()" style="flex: 2;">
-                            <input type="text" placeholder="Anno" value="${p.anno}" oninput="saveDraft()" style="flex: 1;">
-                            <input type="text" placeholder="Pena" value="${p.pena}" oninput="saveDraft()" style="flex: 1;">
-                            <button type="button" class="btn-remove-item" onclick="this.parentElement.remove(); saveDraft()">✕</button>
+                // Ripristino penali dinamiche
+                if (data.penali && data.penali.length > 0) {
+                    const container = document.getElementById('penaliContainer');
+                    container.innerHTML = '';
+                    data.penali.forEach(p => {
+                        const div = document.createElement('div');
+                        div.className = 'dynamic-row';
+                        div.innerHTML = `
+                            <input type="text" class="penale-reato" placeholder="Reato" value="${p.reato || ''}" style="flex: 2;" oninput="saveDraft()">
+                            <input type="text" class="penale-anno" placeholder="Anno" value="${p.anno || ''}" style="flex: 1;" oninput="saveDraft()">
+                            <input type="text" class="penale-pena" placeholder="Pena" value="${p.pena || ''}" style="flex: 1;" oninput="saveDraft()">
+                            <button type="button" class="btn-remove" onclick="this.parentElement.remove(); saveDraft();">✕</button>
                         `;
-                        pContainer.appendChild(row);
+                        container.appendChild(div);
                     });
                 }
 
@@ -1082,9 +1134,6 @@
             document.querySelectorAll('.userName').forEach(el => el.innerText = `${user.username}`);
             document.querySelectorAll('.userId').forEach(el => el.innerText = `ID Discord: ${user.id}`);
             document.querySelectorAll('.userAvatar').forEach(el => el.src = safeAvatarUrl);
-            
-            const welcomeText = document.getElementById('welcomeUserText');
-            if(welcomeText) welcomeText.innerText = `Ciao, ${user.username}! Compila tutti i campi con cura. La scheda verrà valutata dallo staff.`;
 
             loadDraft();
         }
@@ -1117,7 +1166,7 @@
             }
         };
 
-        // INVIO SCHEDA BACKGROUND A DISCORD WEBHOOK
+        // INVIO SCHEDA WHITELIST A DISCORD
         function sendWhitelist(event) {
             event.preventDefault();
 
@@ -1134,33 +1183,37 @@
                 ? `https://cdn.discordapp.com/avatars/${userData.id}/${userData.avatar}.png`
                 : 'https://cdn.discordapp.com/embed/avatars/0.png';
 
-            const tabus = Array.from(document.querySelectorAll('.tabu-input')).map(i => i.value).join('\n• ');
-            const penali = Array.from(document.querySelectorAll('.penale-row')).map(r => {
-                const ins = r.querySelectorAll('input');
-                return `${ins[0].value || 'N/D'} (${ins[1].value || 'N/D'} - ${ins[2].value || 'N/D'})`;
-            }).join('\n') || 'Nessun precedente';
+            const tabus = Array.from(document.querySelectorAll('.tabu-input')).map(i => i.value).filter(Boolean).join('\n• ');
+            const penaliElements = Array.from(document.querySelectorAll('#penaliContainer .dynamic-row'));
+            let penaliText = penaliElements.map(row => {
+                const r = row.querySelector('.penale-reato').value;
+                const a = row.querySelector('.penale-anno').value;
+                const p = row.querySelector('.penale-pena').value;
+                return r ? `• ${r} (${a || 'N/D'} - ${p || 'N/D'})` : '';
+            }).filter(Boolean).join('\n') || 'Nessun precedente';
 
             const payload = {
-                username: "Schede Background - San Vitrano",
+                username: "Schede Background - The Last Stand",
                 embeds: [{
-                    title: "📋 NUOVA SCHEDA BACKGROUND INVIATA",
-                    color: 16753920,
+                    title: "📝 NUOVA SCHEDA BACKGROUND (BLACKWOOD)",
+                    color: 15844367,
                     thumbnail: { url: userAvatarUrl },
                     fields: [
-                        { name: "👤 Utente Discord", value: `<@${userData.id}> (${userData.username})`, inline: false },
-                        { name: "🪪 Nome e Cognome", value: `${document.getElementById('wlNome').value} ${document.getElementById('wlCognome').value}`, inline: true },
-                        { name: "📅 Data di Nascita", value: `${document.getElementById('wlGiorno').value}/${document.getElementById('wlMese').value}/${document.getElementById('wlAnno').value}`, inline: true },
-                        { name: "🚻 Sesso / Provenienza", value: `${document.getElementById('wlSesso').value} (${document.getElementById('wlProvenienza').value})`, inline: true },
-                        { name: "👔 Prototipo / Mestiere", value: `${document.getElementById('wlPrototipo').value} / ${document.getElementById('wlMestiereIdeale').value}`, inline: false },
-                        { name: "📜 Storia del Personaggio", value: document.getElementById('wlStoria').value, inline: false },
+                        { name: "👤 Autore Discord", value: `<@${userData.id}> (${userData.username})`, inline: true },
+                        { name: "🪪 Personaggio", value: `${document.getElementById('wlNome').value} ${document.getElementById('wlCognome').value}`, inline: true },
+                        { name: "🎂 Data Nascita", value: `${document.getElementById('wlGiorno').value}/${document.getElementById('wlMese').value}/${document.getElementById('wlAnno').value}`, inline: true },
+                        { name: "🌍 Provenienza", value: document.getElementById('wlProvenienza').value, inline: true },
+                        { name: "🎯 Archetipo", value: document.getElementById('wlPrototipo').value, inline: true },
+                        { name: "🛠️ Mestiere", value: document.getElementById('wlMestiere').value, inline: true },
+                        { name: "📜 Storia", value: document.getElementById('wlStoria').value, inline: false },
                         { name: "🕵️ Mistero Segreto", value: document.getElementById('wlMistero').value, inline: false },
-                        { name: "⚖️ Vizi / Qualità / Difetti", value: `**Vizi:** ${document.getElementById('wlVizi').value}\n**Qualità:** ${document.getElementById('wlQualita').value}\n**Difetti:** ${document.getElementById('wlDifetti').value}`, inline: false },
-                        { name: "✋ Tabù del Personaggio", value: `• ${tabus}`, inline: false },
-                        { name: "🔨 Precedenti Penali", value: penali, inline: false },
+                        { name: "🎭 Vizi / Qualità / Difetti", value: `**Vizi:** ${document.getElementById('wlVizi').value}\n**Qualità:** ${document.getElementById('wlQualita').value}\n**Difetti:** ${document.getElementById('wlDifetti').value}`, inline: false },
+                        { name: "✋ Tabù", value: `• ${tabus}`, inline: false },
+                        { name: "⚖️ Precedenti Penali", value: penaliText, inline: false },
                         { name: "🎯 Scopi", value: document.getElementById('wlScopi').value, inline: false },
                         { name: "🏁 Meta", value: document.getElementById('wlMeta').value, inline: false }
                     ],
-                    footer: { text: "The Last Stand - Sistema San Vitrano" },
+                    footer: { text: "The Last Stand - Sistema Whitelist Blackwood" },
                     timestamp: new Date().toISOString()
                 }]
             };
@@ -1174,25 +1227,73 @@
                 if (response.ok) {
                     showStatus('statusWhitelist', 'Scheda Background inviata con successo!', 'success');
                     document.getElementById('whitelistForm').reset();
-                    localStorage.removeItem('whitelist_draft');
+                    localStorage.removeItem('blacklist_whitelist_draft');
                     document.getElementById('draftIndicator').style.display = 'none';
                 } else {
-                    showStatus('statusWhitelist', 'Errore durante l\'invio.', 'error');
+                    showStatus('statusWhitelist', 'Errore durante l\'invio della scheda.', 'error');
                 }
             })
             .catch(() => {
-                showStatus('statusWhitelist', 'Errore di connessione.', 'error');
+                showStatus('statusWhitelist', 'Errore di connessione al server Discord.', 'error');
             })
             .finally(() => {
                 submitBtn.disabled = false;
-                submitBtn.innerText = 'Invia Scheda';
+                submitBtn.innerText = 'Invia Scheda Whitelist';
             });
         }
 
+        // INVIO CANDIDATURA STAFF
         function sendApplication(event) {
             event.preventDefault();
-            // Gestione Candidatura Staff
-            showStatus('statusMessage', 'Candidatura inviata con successo!', 'success');
+            if (!userData) return;
+
+            const submitBtn = document.getElementById('submitBtn');
+            submitBtn.disabled = true;
+            submitBtn.innerText = 'Invio in corso...';
+
+            const userAvatarUrl = userData.avatar 
+                ? `https://cdn.discordapp.com/avatars/${userData.id}/${userData.avatar}.png`
+                : 'https://cdn.discordapp.com/embed/avatars/0.png';
+
+            const payload = {
+                username: "Candidature Staff - The Last Stand",
+                embeds: [{
+                    title: "🛡️ NUOVA CANDIDATURA STAFF",
+                    color: 15844367,
+                    thumbnail: { url: userAvatarUrl },
+                    fields: [
+                        { name: "👤 Utente Discord", value: `<@${userData.id}> (${userData.username})`, inline: true },
+                        { name: "🎮 Nickname Minecraft", value: document.getElementById('mcUsername').value, inline: true },
+                        { name: "🎂 Età", value: document.getElementById('etaOOC').value, inline: true },
+                        { name: "🛡️ Ruolo", value: document.getElementById('ruolo').value, inline: false },
+                        { name: "📜 Esperienze", value: document.getElementById('esperienze').value, inline: false },
+                        { name: "📌 Motivazione", value: document.getElementById('motivazione').value, inline: false }
+                    ],
+                    footer: { text: "The Last Stand - Sistema Staff" },
+                    timestamp: new Date().toISOString()
+                }]
+            };
+
+            fetch(WEBHOOK_STAFF, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(payload)
+            })
+            .then(response => {
+                if (response.ok) {
+                    showStatus('statusMessage', 'Candidatura inviata con successo!', 'success');
+                    document.getElementById('applicationForm').reset();
+                } else {
+                    showStatus('statusMessage', 'Errore durante l\'invio.', 'error');
+                }
+            })
+            .catch(() => {
+                showStatus('statusMessage', 'Errore di connessione.', 'error');
+            })
+            .finally(() => {
+                submitBtn.disabled = false;
+                submitBtn.innerText = 'Invia Candidatura Staff';
+            });
         }
 
         function showStatus(elementId, text, type) {
