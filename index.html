@@ -108,6 +108,27 @@
             box-shadow: 0 0 15px rgba(255, 46, 46, 0.5);
         }
 
+        /* Menu a tendina mobile / responsivo */
+        .nav-select-container {
+            display: none;
+            width: 100%;
+            margin-top: 0.5rem;
+        }
+
+        .nav-select {
+            width: 100%;
+            padding: 0.8rem 1rem;
+            background: rgba(10, 8, 8, 0.95);
+            border: 1px solid var(--primary-red);
+            border-radius: 8px;
+            color: #fff;
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 0.95rem;
+            outline: none;
+            box-shadow: 0 0 10px rgba(255, 46, 46, 0.3);
+        }
+
         /* Discord Logo */
         .nav-discord-logo {
             display: flex;
@@ -342,24 +363,6 @@
         }
 
         /* Lore Styles */
-        .lore-box {
-            background: rgba(0, 0, 0, 0.4);
-            border-left: 4px solid var(--primary-red);
-            padding: 1.5rem;
-            border-radius: 0 8px 8px 0;
-            margin-bottom: 1.5rem;
-        }
-
-        .lore-quote {
-            font-style: italic;
-            font-weight: bold;
-            color: var(--accent-orange);
-            font-size: 1.1rem;
-            margin: 1.2rem 0;
-            text-align: center;
-            letter-spacing: 1px;
-        }
-
         .rules-list {
             list-style: none;
         }
@@ -409,14 +412,17 @@
             margin-top: auto;
         }
 
-        @media (max-width: 768px) {
+        @media (max-width: 900px) {
             .navbar {
                 flex-direction: column;
-                gap: 1rem;
+                gap: 0.5rem;
+                padding: 1rem;
             }
             .nav-links {
-                width: 100%;
-                justify-content: center;
+                display: none; /* Nasconde la barra classica su schermi piccoli */
+            }
+            .nav-select-container {
+                display: block; /* Mostra il menu a tendina */
             }
             .card {
                 padding: 1.5rem;
@@ -433,10 +439,24 @@
 
     <!-- NAVIGAZIONE -->
     <nav class="navbar">
-        <div class="nav-brand">
-            <img src="logo.png" alt="Logo The Last Stand" class="nav-logo">
-            <span>The Last Stand</span>
+        <div style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
+            <div class="nav-brand">
+                <img src="logo.png" alt="Logo The Last Stand" class="nav-logo">
+                <span>The Last Stand</span>
+            </div>
+            <!-- Logo Discord visibile anche nella navbar mobile -->
+            <div class="nav-links" style="margin-left: auto;">
+                <li>
+                    <a href="https://discord.gg/75m3eZtsfj" target="_blank" class="nav-discord-logo" title="Unisciti al Server Discord">
+                        <svg viewBox="0 0 127.14 96.36">
+                            <path d="M107.7,8.07A105.15,105.15,0,0,0,81.47,0a72.06,72.06,0,0,0-3.36,6.83A97.68,97.68,0,0,0,49,6.83,72.37,72.37,0,0,0,45.64,0,105.89,105.89,0,0,0,19.39,8.09C2.79,32.65-1.71,56.6.54,80.21A105.73,105.73,0,0,0,32.71,96.36,77.7,77.7,0,0,0,39.6,85.25a68.42,68.42,0,0,1-10.85-5.18c.91-.66,1.8-1.34,2.66-2a75.57,75.57,0,0,0,64.32,0c.87.71,1.76,1.39,2.66,2a68.68,68.68,0,0,1-10.87,5.19,77,77,0,0,0,6.89,11.1,105.25,105.25,0,0,0,32.19-16.14c2.64-27.38-4.51-51.11-18.91-72.15ZM42.45,65.69C36.18,65.69,31,60,31,53s5-12.74,11.43-12.74S54,45.92,53.86,53,48.81,65.69,42.45,65.69Zm42.24,0C78.41,65.69,73.25,60,73.25,53s5-12.74,11.44-12.74S96.23,45.92,96.09,53,91.08,65.69,84.69,65.69Z"/>
+                        </svg>
+                    </a>
+                </li>
+            </div>
         </div>
+
+        <!-- Links Desktop -->
         <ul class="nav-links">
             <li><a href="#" onclick="showTab('home')" id="nav-home" class="active">Home</a></li>
             <li><a href="#" onclick="showTab('lore')" id="nav-lore">Lore</a></li>
@@ -445,7 +465,6 @@
             <li><a href="#" onclick="showTab('staff')" id="nav-staff">Staff & Contatti</a></li>
             <li><a href="#" onclick="showTab('mappa')" id="nav-mappa">Mappa</a></li>
             <li><a href="#" onclick="showTab('regolamento')" id="nav-regolamento">Regolamento</a></li>
-            <!-- LOGO DISCORD -->
             <li>
                 <a href="https://discord.gg/75m3eZtsfj" target="_blank" class="nav-discord-logo" title="Unisciti al Server Discord">
                     <svg viewBox="0 0 127.14 96.36">
@@ -454,6 +473,19 @@
                 </a>
             </li>
         </ul>
+
+        <!-- Menu a Tendina per Mobile -->
+        <div class="nav-select-container">
+            <select id="mobileNavSelect" class="nav-select" onchange="onMobileNavChange(this.value)">
+                <option value="home">🏠 Home</option>
+                <option value="lore">📜 Lore</option>
+                <option value="whitelist">📝 Whitelist</option>
+                <option value="candidatura">🛡️ Candidatura Staff</option>
+                <option value="staff">👑 Staff & Contatti</option>
+                <option value="mappa">🗺️ Mappa</option>
+                <option value="regolamento">📖 Regolamento</option>
+            </select>
+        </div>
     </nav>
 
     <div class="container">
@@ -470,7 +502,6 @@
                     Sopravvivi all'apocalisse zombie, esplora la metropoli in rovina e costruisci la tua roccaforte. Riuscirai a superare la notte?
                 </p>
                 
-                <!-- PULSANTI PRINCIPALI -->
                 <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; max-width: 600px; margin: 0 auto;">
                     <button class="btn" style="flex: 1; min-width: 220px;" onclick="showTab('whitelist')">Richiedi Whitelist</button>
                     <button class="btn" style="flex: 1; min-width: 220px;" onclick="showTab('lore')">Leggi la Lore</button>
@@ -489,8 +520,6 @@
                 </div>
 
                 <div style="margin-top: 1.5rem; text-align: left;">
-                    
-                    <!-- CAPITOLO 1 -->
                     <div style="border-left: 3px solid var(--primary-red); padding-left: 1rem; margin-bottom: 2rem; background: rgba(0,0,0,0.2); padding: 1rem; border-radius: 0 8px 8px 0;">
                         <h3 style="color: var(--primary-red); font-size: 1.2rem; margin-bottom: 0.5rem; text-transform: uppercase;">1. Il Contagio del '94</h3>
                         <p style="color: var(--text-light); font-size: 0.95rem; line-height: 1.7;">
@@ -498,7 +527,6 @@
                         </p>
                     </div>
 
-                    <!-- CAPITOLO 2 -->
                     <div style="border-left: 3px solid var(--accent-orange); padding-left: 1rem; margin-bottom: 2rem; background: rgba(0,0,0,0.2); padding: 1rem; border-radius: 0 8px 8px 0;">
                         <h3 style="color: var(--accent-orange); font-size: 1.2rem; margin-bottom: 0.5rem; text-transform: uppercase;">2. La Zona Rossa: Blackwood</h3>
                         <p style="color: var(--text-light); font-size: 0.95rem; line-height: 1.7;">
@@ -506,38 +534,32 @@
                         </p>
                     </div>
 
-                    <!-- FAZIONI E RUOLI -->
                     <h2 style="color: var(--text-light); font-size: 1.4rem; margin: 2rem 0 1rem 0; border-bottom: 1px solid var(--bg-card-border); padding-bottom: 0.5rem;">
                         ⚖️ Chi Anima le Strade
                     </h2>
 
                     <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1rem; margin-bottom: 2rem;">
-                        <!-- RUOLO 1 -->
                         <div style="background: rgba(0,0,0,0.5); border: 1px solid var(--bg-card-border); border-radius: 8px; padding: 1rem;">
                             <h4 style="color: var(--primary-red); margin-bottom: 0.5rem;">✊ La Resistenza</h4>
                             <p style="color: var(--text-muted); font-size: 0.85rem;">Un gruppo organizzato che si unisce per difendere i propri rifugi, condividere le risorse e combattere l'oppressione di ciò che resta del vecchio regime.</p>
                         </div>
 
-                        <!-- RUOLO 2 -->
                         <div style="background: rgba(0,0,0,0.5); border: 1px solid var(--bg-card-border); border-radius: 8px; padding: 1rem;">
                             <h4 style="color: var(--accent-orange); margin-bottom: 0.5rem;">🎒 I Vagabondi</h4>
                             <p style="color: var(--text-muted); font-size: 0.85rem;">Cani sciolti e nomadi che viaggiano leggeri, senza legami fissi. Si affidano unicamente al proprio istinto e alla fortuna per superare un altro giorno a Blackwood.</p>
                         </div>
 
-                        <!-- RUOLO 3 -->
                         <div style="background: rgba(0,0,0,0.5); border: 1px solid var(--bg-card-border); border-radius: 8px; padding: 1rem;">
                             <h4 style="color: var(--text-gold); margin-bottom: 0.5rem;">👮 I Federali</h4>
                             <p style="color: var(--text-muted); font-size: 0.85rem;">Ex forze dell'ordine e agenti rimasti tagliati fuori dal mondo. Occupano barricate fortificate e pretendono disciplina e controllo su chiunque attraversi il loro territorio.</p>
                         </div>
                     </div>
 
-                    <!-- CHIAMATA ALL'AZIONE -->
                     <div style="background: rgba(255, 46, 46, 0.15); border: 1px dashed var(--primary-red); border-radius: 8px; padding: 1.2rem; text-align: center;">
                         <p style="color: var(--text-light); font-weight: 600; margin: 0;">
                             Sintonizzati sulla frequenza radio di emergenza. Da che parte scriverai la tua storia in questo 1994 senza via d'uscita?
                         </p>
                     </div>
-
                 </div>
             </div>
         </div>
@@ -553,7 +575,6 @@
 
                 <div id="statusWhitelist" class="status-message"></div>
 
-                <!-- Login Discord -->
                 <div class="discordAuthSection">
                     <p style="text-align: center; margin-bottom: 1.5rem; color: #a0aec0;">
                         Autenticati con Discord per inviare la richiesta di inserimento in Whitelist.
@@ -566,7 +587,6 @@
                     </button>
                 </div>
 
-                <!-- Form Whitelist Strutturato in Sezioni -->
                 <form id="whitelistForm" class="auth-form" style="display: none;" onsubmit="sendWhitelist(event)">
                     <div class="user-info">
                         <div class="user-profile-meta">
@@ -579,7 +599,6 @@
                         <button type="button" class="btn btn-logout" onclick="logoutDiscord()">Esci / Logout</button>
                     </div>
 
-                    <!-- SEZIONE 1: DATI PERSONAGGIO -->
                     <div style="background: rgba(10, 8, 8, 0.6); border: 1px solid rgba(255, 46, 46, 0.3); border-radius: 12px; padding: 1.5rem; margin-bottom: 1.5rem;">
                         <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 1.2rem; border-bottom: 1px solid rgba(255, 46, 46, 0.2); padding-bottom: 0.8rem;">
                             <span style="font-size: 1.3rem;">🪪</span>
@@ -612,7 +631,6 @@
                         </div>
                     </div>
 
-                    <!-- SEZIONE 2: LORE E APPROCCIO DI GIOCO -->
                     <div style="background: rgba(10, 8, 8, 0.6); border: 1px solid rgba(255, 46, 46, 0.3); border-radius: 12px; padding: 1.5rem; margin-bottom: 1.5rem;">
                         <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 1.2rem; border-bottom: 1px solid rgba(255, 46, 46, 0.2); padding-bottom: 0.8rem;">
                             <span style="font-size: 1.3rem;">📜</span>
@@ -643,7 +661,6 @@
                         </div>
                     </div>
 
-                    <!-- SEZIONE 3: REQUISITI TECNICI -->
                     <div style="background: rgba(10, 8, 8, 0.6); border: 1px solid rgba(255, 46, 46, 0.3); border-radius: 12px; padding: 1.5rem; margin-bottom: 1.5rem;">
                         <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 1.2rem; border-bottom: 1px solid rgba(255, 46, 46, 0.2); padding-bottom: 0.8rem;">
                             <span style="font-size: 1.3rem;">⚙️</span>
@@ -694,7 +711,6 @@
 
                 <div id="statusMessage" class="status-message"></div>
 
-                <!-- Login Discord -->
                 <div class="discordAuthSection">
                     <p style="text-align: center; margin-bottom: 1.5rem; color: #a0aec0;">
                         Effettua il login con Discord per verificare la tua identità ed inviare la candidatura.
@@ -707,7 +723,6 @@
                     </button>
                 </div>
 
-                <!-- Form Candidatura Staff -->
                 <form id="applicationForm" class="auth-form" style="display: none;" onsubmit="sendApplication(event)">
                     <div class="user-info">
                         <div class="user-profile-meta">
@@ -758,7 +773,7 @@
             </div>
         </div>
 
-    <!-- TAB 5: STAFF E CONTATTI -->
+        <!-- TAB 5: STAFF E CONTATTI -->
         <div id="staff" class="tab-content">
             <div class="card">
                 <div class="header-container">
@@ -767,7 +782,6 @@
                     <p>Il team di sopravvissuti a guardia di Blackwood</p>
                 </div>
 
-                <!-- INTRO / SUPPORTO -->
                 <div style="background: rgba(10, 8, 8, 0.6); border: 1px solid rgba(255, 46, 46, 0.3); border-radius: 12px; padding: 1.5rem; margin-bottom: 1.5rem; text-align: center;">
                     <span style="font-size: 2rem;">🛡️</span>
                     <h3 style="font-size: 1.1rem; color: #fff; letter-spacing: 1px; margin: 0.5rem 0;">HAI BISOGNO DI AIUTO O SUPPORTO?</h3>
@@ -782,7 +796,6 @@
                     </a>
                 </div>
 
-                <!-- LISTA RUOLI STAFF -->
                 <div style="background: rgba(10, 8, 8, 0.6); border: 1px solid rgba(255, 46, 46, 0.3); border-radius: 12px; padding: 1.5rem;">
                     <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 1.2rem; border-bottom: 1px solid rgba(255, 46, 46, 0.2); padding-bottom: 0.8rem;">
                         <span style="font-size: 1.3rem;">👑</span>
@@ -792,7 +805,6 @@
                         </div>
                     </div>
 
-                    <!-- Griglia Membri Staff (Solo Owner) -->
                     <div style="display: flex; justify-content: center;">
                         <div style="background: rgba(20, 15, 15, 0.85); border: 1px solid rgba(255, 46, 46, 0.4); border-radius: 12px; padding: 1.5rem; text-align: center; max-width: 300px; width: 100%; box-shadow: 0 4px 15px rgba(255, 46, 46, 0.2);">
                             <img src="download (2).jpg" alt="ercirus" style="width: 80px; height: 80px; border-radius: 50%; border: 2px solid var(--primary-red); object-fit: cover; margin-bottom: 0.3rem; box-shadow: 0 0 10px rgba(255, 46, 46, 0.5);">
@@ -813,7 +825,6 @@
                     <p>Stato Rete Satellitare</p>
                 </div>
                 
-                <!-- SCHERMATA SEGNALE ASSENTE STILE LORE -->
                 <div style="background: rgba(13, 9, 9, 0.9); border: 2px solid var(--primary-red); border-radius: 12px; padding: 3.5rem 1.5rem; text-align: center; margin-top: 1rem; box-shadow: 0 0 20px rgba(255, 46, 46, 0.15);">
                     <div style="font-size: 3rem; margin-bottom: 0.5rem;">📡❌</div>
                     <h2 style="color: var(--primary-red); font-size: 1.8rem; margin-bottom: 0.8rem; text-transform: uppercase; letter-spacing: 2px;">Rete Satellitare Offline</h2>
@@ -885,9 +896,19 @@
             document.querySelectorAll('.tab-content').forEach(tab => tab.classList.remove('active'));
             document.querySelectorAll('.nav-links a').forEach(link => link.classList.remove('active'));
             
-            document.getElementById(tabId).classList.add('active');
+            const targetTab = document.getElementById(tabId);
+            if (targetTab) targetTab.classList.add('active');
+
             const navLink = document.getElementById('nav-' + tabId);
             if (navLink) navLink.classList.add('active');
+
+            // Sincronizza il menu a tendina mobile
+            const mobileSelect = document.getElementById('mobileNavSelect');
+            if (mobileSelect) mobileSelect.value = tabId;
+        }
+
+        function onMobileNavChange(tabId) {
+            showTab(tabId);
         }
 
         function loginWithDiscord(targetTab) {
@@ -902,11 +923,9 @@
             localStorage.removeItem('discord_user');
             userData = null;
             
-            // Ripristina la UI dei form
             document.querySelectorAll('.auth-form').forEach(el => el.style.display = 'none');
             document.querySelectorAll('.discordAuthSection').forEach(el => el.style.display = 'block');
             
-            // Pulisce i campi dei form
             document.getElementById('whitelistForm').reset();
             document.getElementById('applicationForm').reset();
             localStorage.removeItem('draft_whitelist');
@@ -915,7 +934,6 @@
             window.history.replaceState({}, document.title, window.location.pathname);
         }
 
-        // GESTIONE BOZZE LOCALSTORAGE
         function saveDraft(formType) {
             if (formType === 'whitelist') {
                 const draft = {
@@ -987,7 +1005,6 @@
             document.querySelectorAll('.userId').forEach(el => el.innerText = `ID Discord: ${user.id}`);
             document.querySelectorAll('.userAvatar').forEach(el => el.src = avatarUrl);
 
-            // Carica le rispettive bozze salvate in precedenza
             loadDraft('whitelist');
             loadDraft('application');
         }
@@ -1028,7 +1045,6 @@
             }
         };
 
-        // INVIO RICHIESTA WHITELIST
         function sendWhitelist(event) {
             event.preventDefault();
 
@@ -1090,7 +1106,6 @@
             });
         }
 
-        // INVIO CANDIDATURA STAFF
         function sendApplication(event) {
             event.preventDefault();
 
@@ -1134,7 +1149,7 @@
             .then(response => {
                 if (response.ok) {
                     showStatus('statusMessage', 'Candidatura Staff inviata con successo!', 'success');
-                    document.getElementById('applicationForm').reset();
+                    document.getElementById('applicationForm5').reset();
                     localStorage.removeItem('draft_application');
                 } else {
                     showStatus('statusMessage', 'Errore durante l\'invio.', 'error');
