@@ -89,6 +89,9 @@
             list-style: none;
             flex-wrap: wrap;
             align-items: center;
+            justify-content: center; /* Centra i bottoni all'interno della barra */
+            flex: 1;                 /* Occupa lo spazio disponibile tra brand e discord */
+            margin: 0 2rem;          /* Spaziatura di sicurezza dai lati */
         }
 
         .nav-links a {
@@ -117,6 +120,11 @@
             background: transparent !important;
             border: none !important;
             box-shadow: none !important;
+        }
+
+        /* Spinge l'ultimo elemento (Discord) completamente a destra */
+        .nav-links li:last-child {
+            margin-left: auto;
         }
 
         .nav-discord-logo svg {
@@ -417,6 +425,10 @@
             .nav-links {
                 width: 100%;
                 justify-content: center;
+                margin: 0;
+            }
+            .nav-links li:last-child {
+                margin-left: 0; /* Annulla il push a destra su mobile */
             }
             .card {
                 padding: 1.5rem;
