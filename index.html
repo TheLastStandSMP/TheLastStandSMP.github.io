@@ -956,4 +956,207 @@
                     document.getElementById('wlComeHaiTrovato').value = draft.wlComeHaiTrovato || '';
                 }
             } else if (formType === 'application') {
-       ... (10 KB rimanenti)
+                const saved = localStorage.getItem('draft_application');
+                if (saved) {
+                    const draft = JSON.parse(saved);
+                    document.getElementById('mcUsername').value = draft.mcUsername || '';
+                    document.getElementById('etaOOC').value = draft.etaOOC || '';
+                    document.getElementById('ruolo').value = draft.ruolo || '';
+                    document.getElementById('esperienze').value = draft.esperienze || '';
+                    document.getElementById('motivazione').value = draft.motivazione || '';
+                }
+            }
+        }
+
+        function manualSaveMessage(formType) {
+            saveDraft(formType);
+            const statusId = formType === 'whitelist' ? 'statusWhitelist' : 'statusMessage';
+            showStatus(statusId, 'Bozza salvata con successo sul browser!', 'success');
+        }
+
+        function applyUserData(user) {
+            userData = user;
+            document.querySelectorAll('.discordAuthSection').forEach(el => el.style.display = 'none');
+            document.querySelectorAll('.auth-form').forEach(el => el.style.display = 'block');
+            
+            const avatarUrl = user.avatar 
+                ? `https://cdn.discordapp.com/avatars/${user.id}/${user.avatar}.png`
+                : 'https://cdn.discordapp.com/embed/avatars/0.png';
+
+            document.querySelectorAll('.userName').forEach(el => el.innerText = `${user.username}`);
+            document.querySelectorAll('.userId').forEach(el => el.innerText = `ID Discord: ${user.id}`);
+            document.querySelectorAll('.userAvatar').forEach(el => el.src = avatarUrl);
+
+            // Carica le rispettive bozze salvate in precedenza
+            loadDraft('whitelist');
+            loadDraft('application');
+        }
+
+        window.onload = function() {
+            const fragment = new URLSearchParams(window.location.hash.slice(1));
+            const accessToken = fragment.get('access_token');
+            const targetTab = fragment.get('state') || 'home';
+
+            if (accessToken) {
+                localStorage.setItem('discord_access_token', accessToken);
+                window.history.replaceState({}, document.title, window.location.pathname);
+            }
+
+            const storedToken = localStorage.getItem('discord_access_token');
+            const cachedUser = localStorage.getItem('discord_user');
+
+            showTab(targetTab);
+
+            if (storedToken) {
+                if (cachedUser) {
+                    applyUserData(JSON.parse(cachedUser));
+                } else {
+                    fetch('https://discord.com/api/users/@me', {
+                        headers: { authorization: `Bearer ${storedToken}` }
+                    })
+                    .then(res => res.json())
+                    .then(user => {
+                        if (user.id) {
+                            localStorage.setItem('discord_user', JSON.stringify(user));
+                            applyUserData(user);
+                        } else {
+                            logoutDiscord();
+                        }
+                    })
+                    .catch(() => logoutDiscord());
+                }
+            }
+        };
+
+        // INVIO RICHIESTA WHITELIST
+        function sendWhitelist(event) {
+            event.preventDefault();
+
+            if (!userData) {
+                showStatus('statusWhitelist', 'Errore: Devi effettuare il login con Discord.', 'error');
+                return;
+            }
+
+            const submitBtn = document.getElementById('submitWlBtn');
+            submitBtn.disabled = true;
+            submitBtn.innerText = 'Invio in corso...';
+
+            const userAvatarUrl = userData.avatar 
+                ? `https://cdn.discordapp.com/avatars/${userData.id}/${userData.avatar}.png`
+                : 'https://cdn.discordapp.com/embed/avatars/0.png';
+
+            const payload = {
+                username: "Whitelist - The Last Stand",
+                embeds: [{
+                    title: "📝 NUOVA RICHIESTA WHITELIST",
+                    color: 16723246,
+                    thumbnail: { url: userAvatarUrl },
+                    fields: [
+                        { name: "👤 Utente Discord", value: `<@${userData.id}> (${userData.username})`, inline: true },
+                        { name: "🎮 Nickname MC", value: document.getElementById('wlMcUsername').value, inline: true },
+                        { name: "🎂 Età", value: document.getElementById('wlEta').value, inline: true },
+                        { name: "⏳ Anni su Minecraft", value: document.getElementById('wlEsperienza').value, inline: true },
+                        { name: "🎯 Stile di Gioco", value: document.getElementById('wlStileGioco').value, inline: true },
+                        { name: "🎙️ Microfono", value: document.getElementById('wlMicrofono').value, inline: true },
+                        { name: "💀 Reazione in caso di Morte/Looting", value: document.getElementById('wlReazioneMorte').value, inline: false },
+                        { name: "🩸 Conoscenza Luna di Sangue", value: document.getElementById('wlLoreCheck').value, inline: false },
+                        { name: "🔎 Come ci ha trovati", value: document.getElementById('wlComeHaiTrovato').value, inline: false }
+                    ],
+                    footer: { text: "The Last Stand - Sistema Whitelist" },
+                    timestamp: new Date().toISOString()
+                }]
+            };
+
+            fetch(WEBHOOK_WHITELIST, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(payload)
+            })
+            .then(response => {
+                if (response.ok) {
+                    showStatus('statusWhitelist', 'Richiesta Whitelist inviata con successo!', 'success');
+                    document.getElementById('whitelistForm').reset();
+                    localStorage.removeItem('draft_whitelist');
+                } else {
+                    showStatus('statusWhitelist', 'Errore durante l\'invio.', 'error');
+                }
+            })
+            .catch(() => {
+                showStatus('statusWhitelist', 'Errore di connessione.', 'error');
+            })
+            .finally(() => {
+                submitBtn.disabled = false;
+                submitBtn.innerText = 'Invia Richiesta Whitelist';
+            });
+        }
+
+        // INVIO CANDIDATURA STAFF
+        function sendApplication(event) {
+            event.preventDefault();
+
+            if (!userData) {
+                showStatus('statusMessage', 'Errore: Devi effettuare il login con Discord.', 'error');
+                return;
+            }
+
+            const submitBtn = document.getElementById('submitBtn');
+            submitBtn.disabled = true;
+            submitBtn.innerText = 'Invio in corso...';
+
+            const userAvatarUrl = userData.avatar 
+                ? `https://cdn.discordapp.com/avatars/${userData.id}/${userData.avatar}.png`
+                : 'https://cdn.discordapp.com/embed/avatars/0.png';
+
+            const payload = {
+                username: "Candidature - The Last Stand",
+                embeds: [{
+                    title: "🛡️ NUOVA CANDIDATURA STAFF",
+                    color: 16723246,
+                    thumbnail: { url: userAvatarUrl },
+                    fields: [
+                        { name: "👤 Utente Discord", value: `<@${userData.id}> (${userData.username})`, inline: true },
+                        { name: "🎮 Nickname Minecraft", value: document.getElementById('mcUsername').value, inline: true },
+                        { name: "🎂 Età", value: document.getElementById('etaOOC').value, inline: true },
+                        { name: "🛡️ Ruolo Desiderato", value: document.getElementById('ruolo').value, inline: false },
+                        { name: "📜 Esperienze Passate", value: document.getElementById('esperienze').value, inline: false },
+                        { name: "📌 Motivazione", value: document.getElementById('motivazione').value, inline: false }
+                    ],
+                    footer: { text: "The Last Stand - Sistema Staff" },
+                    timestamp: new Date().toISOString()
+                }]
+            };
+
+            fetch(WEBHOOK_STAFF, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(payload)
+            })
+            .then(response => {
+                if (response.ok) {
+                    showStatus('statusMessage', 'Candidatura Staff inviata con successo!', 'success');
+                    document.getElementById('applicationForm').reset();
+                    localStorage.removeItem('draft_application');
+                } else {
+                    showStatus('statusMessage', 'Errore durante l\'invio.', 'error');
+                }
+            })
+            .catch(() => {
+                showStatus('statusMessage', 'Errore di connessione.', 'error');
+            })
+            .finally(() => {
+                submitBtn.disabled = false;
+                submitBtn.innerText = 'Invia Candidatura Staff';
+            });
+        }
+
+        function showStatus(elementId, text, type) {
+            const el = document.getElementById(elementId);
+            if (!el) return;
+            el.innerText = text;
+            el.className = 'status-message ' + (type === 'success' ? 'status-success' : 'status-error');
+            el.style.display = 'block';
+            setTimeout(() => { el.style.display = 'none'; }, 6000);
+        }
+    </script>
+</body>
+</html>
